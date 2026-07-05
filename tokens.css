@@ -1,0 +1,148 @@
+/* ============================================================================
+   NUKLEYO DESIGN SYSTEM — tokens.css
+   Jerald B. Bongalos · Nukleyo Decision Science
+   The visual vocabulary for a data-scientist–educator brand.
+   Concept: a dense navy "nucleus" (rigor, depth) with a teal analytical
+   signal and an amber spark of insight. Cool, disciplined, legible.
+   All design decisions resolve to a token below. Edit a hex here and it
+   propagates through every component.
+   ============================================================================ */
+
+:root {
+  /* --- Brand core ------------------------------------------------------- */
+  --nk-abyss:      #071B2E;   /* deepest ink / footers */
+  --nk-navy:       #0E2F4C;   /* PRIMARY — authority, structure */
+  --nk-navy-600:   #164A73;   /* navy hover / secondary depth */
+  --nk-teal:       #0E7C86;   /* ACCENT — analysis, the working signal */
+  --nk-teal-400:   #3AA9AC;   /* light teal / hover */
+  --nk-amber:      #E4A44C;   /* HIGHLIGHT — insight, the nucleus spark */
+  --nk-coral:      #D75A4A;   /* emphasis / caution */
+  --nk-verdant:    #2F9E6B;   /* organic / positive (a nod to radiobiology) */
+
+  /* --- Neutrals (cool, navy-tinted) ------------------------------------ */
+  --nk-ink:        #0F1E2A;   /* primary text */
+  --nk-graphite:   #33475A;   /* strong secondary text */
+  --nk-slate:      #5E7180;   /* muted text, captions */
+  --nk-silver:     #AEBDC7;   /* strong borders, disabled */
+  --nk-mist:       #E7EDF1;   /* hairline borders, subtle fills */
+  --nk-paper:      #F6F9FB;   /* page background */
+  --nk-white:      #FFFFFF;   /* card surface */
+
+  /* --- Semantic roles --------------------------------------------------- */
+  --nk-info:       var(--nk-teal);
+  --nk-success:    var(--nk-verdant);
+  --nk-warning:    var(--nk-amber);
+  --nk-danger:     var(--nk-coral);
+
+  /* pale role tints (for callouts, badges) */
+  --nk-info-bg:    #E1F1F2;
+  --nk-success-bg: #E4F3EC;
+  --nk-warning-bg: #FBF0DE;
+  --nk-danger-bg:  #FBE8E4;
+  --nk-navy-bg:    #E9EEF3;
+  --nk-teal-bg:    #E1F1F2;
+
+  /* --- Data-visualization categorical palette (fixed order, never cycled) */
+  --nk-viz-1: #0E2F4C;   /* navy      */
+  --nk-viz-2: #0E7C86;   /* teal      */
+  --nk-viz-3: #E4A44C;   /* amber     */
+  --nk-viz-4: #D75A4A;   /* coral     */
+  --nk-viz-5: #5B7DA6;   /* slate-blue*/
+  --nk-viz-6: #2F9E6B;   /* verdant   */
+  --nk-viz-7: #7A5C9E;   /* plum      */
+  --nk-viz-8: #B4794A;   /* clay      */
+
+  /* sequential teal ramp (magnitude / heatmaps / choropleths) */
+  --nk-seq-1: #E1F1F2;
+  --nk-seq-2: #A9DBDD;
+  --nk-seq-3: #6FC2C6;
+  --nk-seq-4: #35A2A8;
+  --nk-seq-5: #0E7C86;
+  --nk-seq-6: #0A5A62;
+  --nk-seq-7: #06393E;
+
+  /* diverging (below <-> above a baseline; neutral gray midpoint) */
+  --nk-div-neg: #D75A4A;
+  --nk-div-mid: #EEF2F4;
+  --nk-div-pos: #0E7C86;
+
+  /* --- Typography ------------------------------------------------------- */
+  --nk-font-display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --nk-font-sans:    "IBM Plex Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --nk-font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --nk-fs-display: 3rem;      /* 48 */
+  --nk-fs-h1:      2.125rem;  /* 34 */
+  --nk-fs-h2:      1.625rem;  /* 26 */
+  --nk-fs-h3:      1.25rem;   /* 20 */
+  --nk-fs-h4:      1.0625rem; /* 17 */
+  --nk-fs-lead:    1.125rem;  /* 18 */
+  --nk-fs-body:    1rem;      /* 16 */
+  --nk-fs-sm:      0.875rem;  /* 14 */
+  --nk-fs-caption: 0.8125rem; /* 13 */
+  --nk-fs-overline:0.75rem;   /* 12 */
+  --nk-fs-data:    0.9375rem; /* 15 — mono/tabular */
+
+  --nk-lh-tight: 1.15;
+  --nk-lh-snug:  1.35;
+  --nk-lh-body:  1.6;
+
+  --nk-fw-light:  300;
+  --nk-fw-regular:400;
+  --nk-fw-medium: 500;
+  --nk-fw-semi:   600;
+  --nk-fw-bold:   700;
+
+  --nk-track-tight:  -0.01em;
+  --nk-track-over:    0.09em;  /* overline / eyebrow */
+
+  /* tabular figures — lock this on all numeric UI so columns align */
+  --nk-num: "tnum" 1, "lnum" 1;
+
+  /* --- Spacing (4px base) ---------------------------------------------- */
+  --nk-space-1:  0.25rem;  /*  4 */
+  --nk-space-2:  0.5rem;   /*  8 */
+  --nk-space-3:  0.75rem;  /* 12 */
+  --nk-space-4:  1rem;     /* 16 */
+  --nk-space-5:  1.25rem;  /* 20 */
+  --nk-space-6:  1.5rem;   /* 24 */
+  --nk-space-8:  2rem;     /* 32 */
+  --nk-space-10: 2.5rem;   /* 40 */
+  --nk-space-12: 3rem;     /* 48 */
+  --nk-space-16: 4rem;     /* 64 */
+
+  /* --- Radii ------------------------------------------------------------ */
+  --nk-radius-sm:   6px;
+  --nk-radius:     10px;   /* default control/card */
+  --nk-radius-lg:  14px;
+  --nk-radius-pill: 999px;
+
+  /* --- Borders ---------------------------------------------------------- */
+  --nk-border:        1px solid var(--nk-mist);
+  --nk-border-strong: 1px solid var(--nk-silver);
+
+  /* --- Elevation (restrained; brand favors flat + hairline) ------------ */
+  --nk-shadow-sm: 0 1px 2px rgba(11,30,50,0.06);
+  --nk-shadow:    0 1px 2px rgba(11,30,50,0.05), 0 6px 16px rgba(11,30,50,0.07);
+  --nk-shadow-lg: 0 2px 6px rgba(11,30,50,0.06), 0 18px 40px rgba(11,30,50,0.10);
+
+  /* focus ring */
+  --nk-ring: 0 0 0 3px rgba(14,124,134,0.30);
+
+  /* motion */
+  --nk-dur: 160ms;
+  --nk-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* Optional dark surface (e.g., app chrome / hero). Opt-in via data attribute. */
+[data-nk-theme="dark"] {
+  --nk-ink:      #EAF1F6;
+  --nk-graphite: #C4D2DC;
+  --nk-slate:    #93A5B1;
+  --nk-mist:     #1C3446;
+  --nk-silver:   #2C475C;
+  --nk-paper:    #0A1E30;
+  --nk-white:    #0E2A41;
+  --nk-navy:     #2E7BB8;
+  --nk-teal:     #3AA9AC;
+}

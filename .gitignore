@@ -1,0 +1,11 @@
+# --- design-sync machine state (regenerated; never commit) ---
+.ds-sync/
+ds-bundle/
+node_modules/
+package-lock.json
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
+
+# --- durable design-sync inputs ARE committed (do not ignore) ---
+# .design-sync/config.json, NOTES.md, conventions.md, previews/, fonts/, overrides/

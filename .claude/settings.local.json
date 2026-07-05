@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(echo \"npm: $\\(npm -v || echo MISSING\\)\")",
+      "Bash(command -v npx)",
+      "Bash(echo \"npx: $\\(command -v npx || echo MISSING\\)\")",
+      "Read(//Users/nukleyo/.cache/**)",
+      "Bash(curl -sI --max-time 8 https://registry.npmjs.org/)",
+      "Read(//Users/nukleyo/.local/**)",
+      "Bash(command -v python3)",
+      "Bash(set -e)",
+      "Bash(npm i *)",
+      "Bash(node -p \"require\\('./node_modules/react/package.json'\\).version\")",
+      "Bash(echo \"react: $\\(node -p \"require\\('./node_modules/react/package.json'\\).version\"\\)\")",
+      "Bash(node -p \"require\\('./node_modules/react-dom/package.json'\\).version\")",
+      "Bash(echo \"react-dom: $\\(node -p \"require\\('./node_modules/react-dom/package.json'\\).version\"\\)\")",
+      "Bash(node .ds-sync/package-build.mjs --config .design-sync/config.json --node-modules ./node_modules --entry ./components/index.js --out ./ds-bundle)",
+      "Bash(node -p \"require\\('playwright/package.json'\\).version\")",
+      "Bash(echo \"playwright version: $\\(node -p \"require\\('playwright/package.json'\\).version\"\\)\")",
+      "Bash(npx --yes playwright install chromium)",
+      "Bash(node .ds-sync/package-validate.mjs ./ds-bundle)",
+      "Bash(node .ds-sync/package-capture.mjs --out ./ds-bundle)",
+      "Bash(node .ds-sync/storybook/http-serve.mjs ./ds-bundle)"
+    ]
+  }
+}

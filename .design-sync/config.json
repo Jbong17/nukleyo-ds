@@ -1,0 +1,39 @@
+{
+  "pkg": "nukleyo-ds",
+  "globalName": "NukleyoDS",
+  "shape": "package",
+  "entry": "./components/index.js",
+  "cssEntry": "tokens.css",
+  "readmeHeader": ".design-sync/conventions.md",
+  "extraFonts": [".design-sync/fonts/ibm-plex.css"],
+  "overrides": {
+    "DataTable": { "cardMode": "column" },
+    "StatTile": { "cardMode": "column" }
+  },
+  "componentSrcMap": {
+    "Button": "components/Button.jsx",
+    "Tag": "components/Tag.jsx",
+    "Badge": "components/Tag.jsx",
+    "Card": "components/Card.jsx",
+    "StatTile": "components/StatTile.jsx",
+    "DataTable": "components/DataTable.jsx",
+    "Callout": "components/Callout.jsx",
+    "Field": "components/Field.jsx",
+    "CitationBlock": "components/CitationBlock.jsx",
+    "BrandLockup": "components/CitationBlock.jsx",
+    "ChartFrame": "components/ChartFrame.jsx"
+  },
+  "dtsPropsFor": {
+    "Button": "  children?: React.ReactNode;\n  /** Visual style. Use at most one primary/accent per view; everything else outline/ghost. */\n  variant?: \"primary\" | \"accent\" | \"outline\" | \"ghost\" | \"subtle\";\n  size?: \"sm\" | \"md\" | \"lg\";\n  /** Optional leading icon element rendered before the label. */\n  icon?: React.ReactNode;\n  disabled?: boolean;\n  style?: React.CSSProperties;\n  onClick?: React.MouseEventHandler<HTMLButtonElement>;\n  /** Other native <button> attributes are spread onto the element. */\n  [key: string]: unknown;",
+    "Tag": "  children?: React.ReactNode;\n  /** Discipline / topic pill color, e.g. \"Data Science\", \"Biology Education\". */\n  tone?: \"navy\" | \"teal\" | \"amber\" | \"coral\" | \"verdant\" | \"neutral\";\n  style?: React.CSSProperties;",
+    "Badge": "  children?: React.ReactNode;\n  /** Status marker rendered with a leading colored dot. */\n  status?: \"info\" | \"success\" | \"warning\" | \"danger\";\n  style?: React.CSSProperties;",
+    "Card": "  children?: React.ReactNode;\n  title?: React.ReactNode;\n  /** Small uppercase eyebrow label above the title (teal). */\n  eyebrow?: React.ReactNode;\n  /** Optional footer strip rendered on a paper-tinted band. */\n  footer?: React.ReactNode;\n  /** Optional left-rule accent color for categorization, e.g. \"var(--nk-teal)\". */\n  accent?: string | null;\n  style?: React.CSSProperties;",
+    "StatTile": "  /** Uppercase overline label above the figure. */\n  label?: React.ReactNode;\n  /** The headline figure (serif display face, tabular figures). */\n  value?: React.ReactNode;\n  /** Optional unit rendered next to the value, e.g. \"%\", \"ms\". */\n  unit?: string;\n  /** Change indicator; dir sets color + arrow (up=verdant ▲, down=coral ▼, flat=slate —). */\n  delta?: { value: string; dir: \"up\" | \"down\" | \"flat\" } | null;\n  /** Muted note rendered after the delta, e.g. \"vs. baseline\". */\n  note?: React.ReactNode;\n  style?: React.CSSProperties;",
+    "DataTable": "  /** Column defs. numeric columns render mono + right-aligned with tabular figures. */\n  columns?: Array<{ key: string; label: React.ReactNode; align?: \"left\" | \"right\" | \"center\"; numeric?: boolean }>;\n  /** Row objects keyed by column.key. */\n  rows?: Array<Record<string, React.ReactNode>>;\n  /** Optional caption rendered above the table. */\n  caption?: React.ReactNode;\n  style?: React.CSSProperties;",
+    "Callout": "  children?: React.ReactNode;\n  /** Pedagogical aside kind; sets the bar color and default label. */\n  kind?: \"note\" | \"method\" | \"caution\" | \"result\";\n  /** Overrides the default kind label (Note / Method / Caution / Result). */\n  title?: React.ReactNode;\n  style?: React.CSSProperties;",
+    "Field": "  /** Field label rendered above the input. */\n  label?: React.ReactNode;\n  /** Muted help text rendered below the input. */\n  help?: React.ReactNode;\n  placeholder?: string;\n  /** Native input type. Default \"text\". */\n  type?: string;\n  value?: string;\n  onChange?: React.ChangeEventHandler<HTMLInputElement>;\n  style?: React.CSSProperties;\n  /** Other native <input> attributes are spread onto the element. */\n  [key: string]: unknown;",
+    "CitationBlock": "  /** The reference text, rendered as an APA-style hanging indent. */\n  children?: React.ReactNode;\n  /** DOI without the https://doi.org/ prefix; rendered as a trailing link. */\n  doi?: string | null;\n  style?: React.CSSProperties;",
+    "BrandLockup": "  /** Compact variant hides the role line and shrinks the nucleus mark. */\n  compact?: boolean;\n  style?: React.CSSProperties;",
+    "ChartFrame": "  /** Figure number; rendered as \"Figure N.\" before the title. */\n  figureNumber?: number;\n  /** Figure caption, rendered italic after the figure number. */\n  title?: React.ReactNode;\n  /** Source line rendered under the figure, prefixed \"Source.\". */\n  source?: React.ReactNode;\n  /** The chart/figure content (Recharts, SVG, etc.). */\n  children?: React.ReactNode;\n  style?: React.CSSProperties;"
+  }
+}
