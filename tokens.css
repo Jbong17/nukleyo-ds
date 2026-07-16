@@ -210,6 +210,17 @@
 }
 
 /* ============================================================================
+   PAGE SURFACE — paint the stage.
+   The default theme's text tokens are light, so an unpainted page renders
+   white-on-white. Both tokens are theme-scoped, so a data-nk-theme="scholarly"
+   root repaints itself back to the document voice.
+   ============================================================================ */
+body {
+  background: var(--nk-paper);
+  color: var(--nk-ink);
+}
+
+/* ============================================================================
    STAGE UTILITY CLASSES (signature deck moves) — work by default everywhere.
    ============================================================================ */
 
