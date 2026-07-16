@@ -239,6 +239,9 @@ body {
 .nk-em--lime   { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-lime); }
 .nk-em--blue   { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-blue); }
 .nk-em--orange { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-orange); }
+/* Red is the alarm voice — a contrast/negative call-out ("VS"), a named threat,
+   or a one-word shock headline over a photo. Use it sparingly; it outranks yellow. */
+.nk-em--red    { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-red); }
 
 /* Highlight bar: solid orange block carrying a white keyword */
 .nk-highlight {
@@ -266,6 +269,9 @@ body {
 .nk-chip--green     { background: var(--nk-stage-green); }
 .nk-chip--turquoise { background: var(--nk-stage-turquoise); }
 .nk-chip--brown     { background: #8A6240; }
+/* Data chip: a specimen / isotope / sample identifier (Cobalt-60, Cesium-137).
+   Bright blue needs BLACK text — white on #38B6FF fails contrast. */
+.nk-chip--blue      { background: var(--nk-stage-blue); color: #000000; }
 
 /* Step marker: small yellow dot with a black number (process diagrams) */
 .nk-step {
@@ -278,3 +284,18 @@ body {
   font-family: var(--nk-font-stage);
   font-weight: 700;
 }
+
+/* Cutout glow: the halo that lifts a transparent-PNG subject (a specimen, a
+   device, a fruit) off the black stage. drop-shadow follows the alpha channel,
+   so it hugs the cutout instead of boxing it — apply to the <img>/<svg> itself,
+   never to a wrapper with a background. Two stacked shadows = tight core + bloom.
+   On a light (scholarly) surface a glow reads as smudge — this is a stage move. */
+.nk-glow {
+  --nk-glow-color: var(--nk-stage-turquoise);
+  filter: drop-shadow(0 0 6px var(--nk-glow-color))
+          drop-shadow(0 0 20px var(--nk-glow-color));
+}
+.nk-glow--blue   { --nk-glow-color: var(--nk-stage-blue); }
+.nk-glow--lime   { --nk-glow-color: var(--nk-stage-lime); }
+.nk-glow--yellow { --nk-glow-color: var(--nk-stage-yellow); }
+.nk-glow--red    { --nk-glow-color: var(--nk-stage-red); }

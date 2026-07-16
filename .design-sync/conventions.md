@@ -67,10 +67,11 @@ There are **no style-system props**. The design language is carried three ways:
    | Class | Use |
    |---|---|
    | `.nk-spotlight` | title-slide headline word: huge, yellow, underlined |
-   | `.nk-em` (`--lime`, `--blue`, `--orange`) | mid-sentence keyword: bolder, 1.2em, colored |
+   | `.nk-em` (`--lime`, `--blue`, `--orange`, `--red`) | mid-sentence keyword: bolder, 1.2em, colored. `--red` is the alarm voice (a "VS" contrast, a named threat, a one-word shock headline) — it outranks yellow, so use it sparingly |
    | `.nk-highlight` | solid orange block carrying a white keyword |
-   | `.nk-chip` (`--green`, `--turquoise`, `--brown`) | rounded pill label for sections/steps/banners |
-   | `.nk-step` | small yellow dot with a black number, for process diagrams |
+   | `.nk-chip` (`--green`, `--turquoise`, `--brown`, `--blue`) | rounded pill label for sections/steps/banners. Bare `.nk-chip` is the neutral slate topic pill (the default). `--blue` is the **data chip** for a specimen/isotope/sample id (e.g. `Cobalt-60`) and carries black text |
+   | `.nk-step` | small yellow dot with a black number, for process diagrams — pair it with a bare `.nk-chip` as the step label |
+   | `.nk-glow` (`--blue`, `--lime`, `--yellow`, `--red`) | the cutout halo: lifts a transparent-PNG subject (specimen, device, fruit) off the black stage. Put it on the `<img>`/`<svg>` itself — it follows the alpha channel, so a wrapper with a background boxes it. Defaults to turquoise. A stage move only; on a light surface it reads as smudge |
 
 ## Where the truth lives
 
