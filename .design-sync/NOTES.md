@@ -89,7 +89,21 @@ Repo-specific gotchas for future syncs. Append whenever something is learned.
   >5KB, and the text nodes exist — they're just unreadable. **Only eyeballing the sheet catches this.**
   If you add a component, copy the `Stage` helper from any existing preview.
 - **`tokens.css`'s `body` rule is load-bearing** (see Styling/fonts). Removing it silently breaks every
-  design that doesn't paint its own background.
+  design that doesn't paint its own background. It now also sets `font-family`/`font-size`/
+  `line-height` — **2026-07-17 found it was setting colours only**, so every unstyled `<p>` in every
+  generated design had been rendering in **Times at 16px** on the black stage. Nothing caught it:
+  the Poppins tokens were all correct, the fonts were vendored, validate was green — the tokens just
+  weren't *applied*. When auditing typography, probe **computed** `fontFamily` on a `<p>` you did NOT
+  style; a test page that sets `body{font-family}` itself will hide the bug (that's how it survived).
+- **Tokens propagate to existing designs; markup does not.** A token edit re-themes every already-
+  generated design on next render (they resolve `var(--nk-*)` live). But the signature lives in
+  `.nk-*` **classes** = markup, which only a *new* design can contain. So a theme change makes old
+  decks change colour while still looking off-brand — that is expected, not a bug. Never judge a
+  token/header change by reopening an old design; generate a new one.
+- **`conventions.md` must be prescriptive, not a reference table.** Listing the stage classes made the
+  agent treat them as optional and it shipped plain white `<h1>`s (correct tokens, zero signature).
+  The "deck voice" section that makes the moves mandatory is the thing that actually changes output —
+  if deck fidelity regresses, suspect that section was softened before suspecting the CSS.
 - **The `.nk-*` stage utility classes have ZERO automated coverage.** No component preview uses
   `.nk-spotlight` / `.nk-em` / `.nk-highlight` / `.nk-chip` / `.nk-step` / `.nk-glow`, so validate,
   the render check, and every grade can pass green while one of them is broken or silently dropped.
