@@ -90,6 +90,13 @@ Repo-specific gotchas for future syncs. Append whenever something is learned.
   If you add a component, copy the `Stage` helper from any existing preview.
 - **`tokens.css`'s `body` rule is load-bearing** (see Styling/fonts). Removing it silently breaks every
   design that doesn't paint its own background.
+- **The `.nk-*` stage utility classes have ZERO automated coverage.** No component preview uses
+  `.nk-spotlight` / `.nk-em` / `.nk-highlight` / `.nk-chip` / `.nk-step` / `.nk-glow`, so validate,
+  the render check, and every grade can pass green while one of them is broken or silently dropped.
+  They reach users only through the design agent (via `conventions.md`) and `templates/`. Verify by
+  hand: point a page at `ds-bundle/styles.css`, exercise each class, and assert **computed** styles
+  (`background` / `color` / `filter`) in headless chromium — "it rendered" proves nothing when the
+  failure mode is a class that doesn't exist. 2026-07-17 did this after adding `--red`/`--blue`/glow.
 - **Grades don't clear on a theme/token change.** `renderHashes` track component *sources*, so the
   a784d53 flip re-rendered every card completely differently while the driver reported all 11
   `unchanged` with `styling: true`. A styling-only diff on this repo means **look at the contact
