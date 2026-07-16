@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nukleyo Decision Science — Letterhead</title>
+<style>
+/* ============================================================================
+   NUKLEYO DECISION SCIENCE — LETTERHEAD
+   Print-ready. Open in a browser → Cmd-P → "Save as PDF".
+   IMPORTANT: in the print dialog enable "Background graphics" (Chrome:
+   More settings ▸ Background graphics) or the cream + rules drop out.
+
+   PAPER: A4 by default. For US Letter, add class="us" to <html> (line 1 of
+   <body> instructions below) — or just change --sheet-h/--sheet-w.
+
+   LOGO: drop your file at letterhead/assets/logo.svg (or .png). Until then a
+   typographic fallback lockup renders in its place — the layout is identical,
+   so the swap changes nothing else.
+
+   PALETTE: sampled by eye from the "Theme 2 — The Decision Engine" sheet.
+   These are ESTIMATES — correct the five hexes below and everything follows.
+   ============================================================================ */
+
+:root {
+  /* --- Theme 2 palette (CORRECT THESE if you have exact values) --------- */
+  --ndsl-cream:  #F7F5F0;   /* page stock — warm off-white */
+  --ndsl-navy:   #1B2A38;   /* primary text, wordmark */
+  --ndsl-teal:   #2E6B5E;   /* accent rule, secondary marks */
+  --ndsl-gold:   #B08D57;   /* the "decision" accent — use once per page */
+  --ndsl-gray:   #6B7680;   /* meta, muted */
+  --ndsl-hair:   #D9D5CC;   /* hairline rules on cream */
+
+  /* --- Paper ------------------------------------------------------------ */
+  --sheet-w: 210mm;   --sheet-h: 297mm;          /* A4 */
+  --pad-x: 20mm;      --pad-top: 16mm;   --pad-bottom: 16mm;
+
+  --font-display: "Cormorant Garamond", "IBM Plex Serif", Georgia, serif;
+  --font-body:    "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+}
+html.us { --sheet-w: 8.5in; --sheet-h: 11in; }
+
+@font-face { font-family:"Cormorant Garamond"; src:url("fonts/CormorantGaramond-400.woff2") format("woff2"); font-weight:400; font-display:swap }
+@font-face { font-family:"Cormorant Garamond"; src:url("fonts/CormorantGaramond-600.woff2") format("woff2"); font-weight:600; font-display:swap }
+@font-face { font-family:"IBM Plex Sans"; src:url("fonts/IBMPlexSans-400.woff2") format("woff2"); font-weight:400; font-display:swap }
+@font-face { font-family:"IBM Plex Sans"; src:url("fonts/IBMPlexSans-500.woff2") format("woff2"); font-weight:500; font-display:swap }
+@font-face { font-family:"IBM Plex Sans"; src:url("fonts/IBMPlexSans-600.woff2") format("woff2"); font-weight:600; font-display:swap }
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: #8A8A8A;
+  font-family: var(--font-body); color: var(--ndsl-navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- The sheet ---------------------------------------------------------- */
+.sheet {
+  width: var(--sheet-w); min-height: var(--sheet-h);
+  margin: 12mm auto; background: var(--ndsl-cream);
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  display: flex; flex-direction: column;
+  box-shadow: 0 2px 20px rgba(0,0,0,.35);
+  position: relative;
+}
+
+/* --- Masthead ----------------------------------------------------------- */
+.masthead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12mm; }
+
+.lockup { display: flex; align-items: center; gap: 5mm; }
+.lockup img { height: 22mm; width: auto; display: block; }
+
+/* Typographic fallback — shown only while assets/logo.svg is absent.
+   It is deliberately plain: a placeholder should not impersonate the mark. */
+.lockup .fallback { display: flex; align-items: center; gap: 4mm; }
+.lockup .fallback .mono-mark {
+  width: 15mm; height: 15mm; flex: none; border: 1.2pt solid var(--ndsl-navy);
+  border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 600; font-size: 20pt;
+  color: var(--ndsl-navy); line-height: 1;
+}
+.wordmark {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 21pt; letter-spacing: .42em; color: var(--ndsl-navy);
+  line-height: 1; text-transform: uppercase; margin-left: .42em;
+}
+.tagline {
+  font-family: var(--font-body); font-size: 5.6pt; font-weight: 500;
+  letter-spacing: .30em; color: var(--ndsl-teal); text-transform: uppercase;
+  margin-top: 2.2mm; margin-left: .3em;
+}
+
+.sender { text-align: right; font-size: 8pt; line-height: 1.55; color: var(--ndsl-gray); padding-top: 1mm; }
+.sender .who { color: var(--ndsl-navy); font-weight: 600; font-size: 8.5pt; letter-spacing: .02em; }
+.sender .role { font-style: italic; }
+
+/* The signature rule: teal hairline with a single gold tick — the one gold
+   moment on the page (Theme 2 uses gold for "decision", not decoration). */
+.rule { margin: 6mm 0 0; height: 1.6pt; background: var(--ndsl-teal); position: relative; border: 0; }
+.rule::after { content: ""; position: absolute; left: 0; top: 0; width: 18mm; height: 100%; background: var(--ndsl-gold); }
+
+/* --- Letter body -------------------------------------------------------- */
+.body { flex: 1 0 auto; padding-top: 10mm; font-size: 10pt; line-height: 1.62; }
+.body .date { color: var(--ndsl-gray); font-size: 9pt; }
+.body .to { margin-top: 7mm; line-height: 1.5; }
+.body .to strong { font-weight: 600; }
+.body .subject {
+  margin-top: 7mm; font-family: var(--font-display); font-weight: 600;
+  font-size: 14pt; letter-spacing: .04em; color: var(--ndsl-navy);
+}
+.body p { margin: 4.5mm 0 0; }
+.body .sig { margin-top: 12mm; }
+.body .sig .name { font-weight: 600; margin-top: 14mm; }
+.body .sig .meta { font-size: 8.5pt; color: var(--ndsl-gray); line-height: 1.5; }
+
+/* --- Footer ------------------------------------------------------------- */
+.foot {
+  margin-top: 10mm; padding-top: 3.5mm; border-top: .6pt solid var(--ndsl-hair);
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8mm;
+  font-size: 7pt; color: var(--ndsl-gray); letter-spacing: .04em;
+}
+.foot .marks { color: var(--ndsl-teal); letter-spacing: .18em; text-transform: uppercase; font-weight: 500; }
+
+/* --- Continuation page -------------------------------------------------- */
+.sheet.cont .masthead { align-items: center; }
+.sheet.cont .lockup img, .sheet.cont .lockup .fallback .mono-mark { height: 11mm; width: 11mm; font-size: 13pt; }
+.sheet.cont .lockup img { width: auto; }
+.sheet.cont .wordmark { font-size: 11pt; letter-spacing: .34em; }
+.sheet.cont .tagline { display: none; }
+.sheet.cont .rule { margin-top: 4mm; height: .8pt; }
+.sheet.cont .rule::after { width: 10mm; }
+
+/* --- Screen-only helper ------------------------------------------------- */
+.hint {
+  max-width: var(--sheet-w); margin: 10mm auto -6mm; padding: 4mm 5mm;
+  background: #fff8dc; border-left: 3pt solid var(--ndsl-gold);
+  font-size: 9pt; line-height: 1.5; color: #4a3f20; font-family: var(--font-body);
+}
+.hint code { background: rgba(0,0,0,.06); padding: 0 3px; border-radius: 2px; }
+
+/* --- Print -------------------------------------------------------------- */
+@page { size: A4; margin: 0; }
+@media print {
+  body { background: #fff; }
+  .hint { display: none !important; }
+  .sheet {
+    margin: 0; box-shadow: none; width: auto; min-height: 100vh;
+    page-break-after: always; break-after: page;
+  }
+  .sheet:last-of-type { page-break-after: auto; break-after: auto; }
+  /* keep the cream + rules — browsers strip backgrounds by default */
+  html, body, .sheet { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<div class="hint">
+  <strong>Screen preview.</strong> Print with <code>Cmd-P → Save as PDF</code>, and turn on
+  <strong>Background graphics</strong> or the cream stock and rules will drop out.
+  For US Letter set <code>&lt;html class="us"&gt;</code>.
+  <br>Drop your logo at <code>letterhead/assets/logo.svg</code> — the placeholder below disappears automatically.
+</div>
+
+<!-- ======================= PAGE 1 — letterhead ======================= -->
+<section class="sheet">
+  <header class="masthead">
+    <div class="lockup">
+      <!-- Swap-in point. onerror keeps the fallback when the file isn't there yet. -->
+      <img src="assets/logo.svg" alt="Nukleyo Decision Science"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="fallback" style="display:none">
+        <div class="mono-mark">N</div>
+        <div>
+          <div class="wordmark">Nukleyo</div>
+          <div class="tagline">Data &nbsp;•&nbsp; Insights &nbsp;•&nbsp; Decisions &nbsp;•&nbsp; Impact</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sender">
+      <div class="who">Jerald B. Bongalos, MScT, LPT, RChT</div>
+      <div class="role">Nuclear &amp; Decision Scientist</div>
+      <div>Scientific Division VI — Agriculture and Forest Science</div>
+      <div>DOST — National Research Council of the Philippines</div>
+      <div>jbbongalos17@gmail.com</div>
+    </div>
+  </header>
+
+  <hr class="rule">
+
+  <main class="body">
+    <div class="date">17 July 2026</div>
+
+    <div class="to">
+      <strong>Dr. Maria Santos</strong><br>
+      Director, Crop Research Institute<br>
+      Los Baños, Laguna 4030
+    </div>
+
+    <div class="subject">Isotopic Verification of Guimaras Mango Provenance</div>
+
+    <p>Dear Dr. Santos,</p>
+
+    <p>Thank you for forwarding the twenty-four fruit samples collected across the
+      three candidate orchards. This letter confirms receipt and sets out the
+      analytical approach we will follow.</p>
+
+    <p>We will determine stable carbon and nitrogen isotope ratios by isotope-ratio
+      mass spectrometry, with elemental profiles by ED-XRF as a corroborating line
+      of evidence. Provenance assignment will be reported with an explicit
+      confidence interval; where the evidence does not separate two origins, we
+      will say so rather than force a call.</p>
+
+    <p>A full Certificate of Analysis will follow within fifteen working days of
+      sample preparation. Please let me know if the reporting format should align
+      with a particular accreditation schedule.</p>
+
+    <div class="sig">
+      <p style="margin:0">Sincerely,</p>
+      <div class="name">Jerald B. Bongalos</div>
+      <div class="meta">
+        MScT, LPT, RChT · Registered Chemical Technician<br>
+        Nukleyo Decision Science
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <span>Nukleyo Decision Science · Philippines</span>
+    <span class="marks">Data • Insights • Decisions • Impact</span>
+    <span>Page 1 of 2</span>
+  </footer>
+</section>
+
+<!-- =================== PAGE 2 — continuation sheet =================== -->
+<section class="sheet cont">
+  <header class="masthead">
+    <div class="lockup">
+      <img src="assets/logo.svg" alt="Nukleyo Decision Science"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="fallback" style="display:none">
+        <div class="mono-mark">N</div>
+        <div><div class="wordmark">Nukleyo</div></div>
+      </div>
+    </div>
+    <div class="sender" style="font-size:7.5pt">
+      <div>Isotopic Verification of Guimaras Mango Provenance</div>
+      <div>17 July 2026 · continued</div>
+    </div>
+  </header>
+
+  <hr class="rule">
+
+  <main class="body">
+    <p>Continuation pages carry a reduced lockup so the mark stays present without
+      competing with the text. The rule, margins, and footer are identical, which
+      keeps a multi-page letter reading as one document.</p>
+
+    <p>Duplicate this <code>&lt;section class="sheet cont"&gt;</code> block for each
+      additional page, or delete it entirely for a one-page letter.</p>
+  </main>
+
+  <footer class="foot">
+    <span>Nukleyo Decision Science · Philippines</span>
+    <span class="marks">Data • Insights • Decisions • Impact</span>
+    <span>Page 2 of 2</span>
+  </footer>
+</section>
+
+</body>
+</html>
