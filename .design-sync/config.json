@@ -8,6 +8,7 @@
   "readmeHeader": ".design-sync/conventions.md",
   "extraFonts": [".design-sync/fonts/ibm-plex.css", ".design-sync/fonts/poppins.css"],
   "overrides": {
+    "Button": { "cardMode": "column" },
     "DataTable": { "cardMode": "column" },
     "StatTile": { "cardMode": "column" }
   },

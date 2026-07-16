@@ -2,71 +2,75 @@
 
 Nukleyo Decision Science is a **data-science × education** brand: a dense navy *nucleus*
 (rigor, structure) with a **teal** analytical signal and an **amber** spark of insight.
-Evidence-first and scholarly — flat surfaces, hairline borders, **one accent per view**,
-and tabular figures wherever numbers appear.
+The default voice is **Stage** — a black stage, Poppins, and a yellow spotlight, built to
+teach and present. The quiet **Scholarly** document voice (navy/serif on white) is opt-in
+per subtree. Evidence-first throughout: **one accent per view**, and tabular figures
+wherever numbers appear.
 
 ## Setup — load the stylesheet, no provider needed
 
 Import `styles.css` **once** at the app root. It defines every `--nk-*` token (via
-`_ds_bundle.css`) and loads the IBM Plex fonts (`fonts/`). Components style themselves inline
-from those tokens, so there is **no theme provider or React context to wrap** — but a component
-rendered on a page that hasn't loaded `styles.css` falls back to browser default fonts/colors.
+`_ds_bundle.css`), loads the Poppins + IBM Plex fonts (`fonts/`), and **paints the page**
+(`body { background: var(--nk-paper); color: var(--nk-ink) }`). Components style themselves
+inline from those tokens, so there is **no theme provider or React context to wrap**.
 
-For a dark surface (app chrome, a hero band), set `data-nk-theme="dark"` on a container — the
-neutral + navy/teal tokens remap inside it. It's opt-in; the default is the light theme.
+Because the default theme's text tokens are **light**, any container where you paint your own
+background must use `var(--nk-paper)` (the stage) or `var(--nk-white)` (a card panel) — never
+a raw hex or an unpainted white surface, or light text lands on light background.
 
-## The styling idiom — component props + CSS variables
+## Themes — Stage by default, Scholarly opt-in
 
-There are **no utility classes** and **no style-system props**. The design language is carried
-two ways:
+`:root` **is** the Stage theme. Opt into the document voice on any subtree:
+
+```jsx
+<article data-nk-theme="scholarly">…</article>   {/* navy + IBM Plex Serif on white */}
+<section data-nk-theme="stage">…</section>       {/* a Stage island inside a Scholarly page */}
+```
+
+Both themes remap the **same semantic tokens**, so components just work in either — keep using
+`--nk-navy` / `--nk-teal` / `--nk-ink` and let the theme do the remap. Never hard-code stage hex.
+There is **no `dark` theme** — Stage is already black.
+
+## The styling idiom — component props, tokens, and the stage classes
+
+There are **no style-system props**. The design language is carried three ways:
 
 1. **Component props — pick the variant, don't restyle.**
    `Button variant="primary|accent|outline|ghost|subtle" size="sm|md|lg"`,
    `Tag tone="navy|teal|amber|coral|verdant|neutral"`, `Badge status="info|success|warning|danger"`,
-   `Callout kind="note|method|caution|result"`, `Card eyebrow= title= accent=`,
-   `StatTile label= value= delta={{ value, dir }}`, `DataTable columns={[{ numeric: true }]}`.
-   Use at most one `primary`/`accent` Button per view; everything else is `outline`/`ghost`.
+   `Callout kind="note|method|caution|result"`, `Card eyebrow= title= footer= accent=`,
+   `StatTile label= value= unit= delta={{ value, dir }}`, `DataTable columns={[{ numeric: true }]}`,
+   `Field label= help=`, `CitationBlock doi=`, `ChartFrame figureNumber= title= source=`,
+   `BrandLockup compact`. Use at most one `primary`/`accent` Button per view.
 
-2. **`var(--nk-*)` tokens for your own layout glue** (wrappers, grids, spacing) — never raw hex/px:
+2. **`var(--nk-*)` tokens for your own layout glue** — never raw hex/px:
    - **Color:** `--nk-navy` (primary), `--nk-teal` (accent), `--nk-amber` (highlight), `--nk-coral`,
-     `--nk-verdant`. Text: `--nk-ink` / `--nk-graphite` / `--nk-slate`. Surfaces: `--nk-white` /
-     `--nk-paper` / `--nk-mist`. Semantic: `--nk-info|success|warning|danger` (+ matching `-bg` tints).
+     `--nk-verdant`. Text: `--nk-ink` / `--nk-graphite` / `--nk-slate`. Surfaces: `--nk-paper` (page)
+     / `--nk-white` (card) / `--nk-mist` / `--nk-abyss`. Semantic: `--nk-info|success|warning|danger`
+     (+ matching `-bg` tints).
    - **Data-viz** (assign by entity, never cycle a rainbow): categorical `--nk-viz-1` … `--nk-viz-8`;
-     sequential teal ramp `--nk-seq-1` … `--nk-seq-7`; diverging `--nk-div-neg|mid|pos`.
-   - **Type:** `--nk-font-display` (IBM Plex Serif — headings + hero numbers), `--nk-font-sans`
-     (IBM Plex Sans — UI/body), `--nk-font-mono` (IBM Plex Mono — data/figures/code). Sizes
-     `--nk-fs-display` … `--nk-fs-caption`; weights `--nk-fw-regular|medium|semi|bold`;
-     line-heights `--nk-lh-tight|snug|body`.
+     sequential ramp `--nk-seq-1` … `--nk-seq-7`; diverging `--nk-div-neg|mid|pos`.
+   - **Stage palette** (fixed in every theme, e.g. slide charts): `--nk-stage-black`,
+     `--nk-stage-yellow`, `--nk-stage-blue`, `--nk-stage-green`, `--nk-stage-lime`, `--nk-stage-red`,
+     `--nk-stage-orange`, `--nk-stage-turquoise`, `--nk-stage-gray`, `--nk-stage-muted`.
+   - **Type:** `--nk-font-display` + `--nk-font-sans` (both Poppins by default via `--nk-font-stage`;
+     Scholarly remaps display → `--nk-font-serif`), `--nk-font-mono` (IBM Plex Mono — data/figures,
+     in **both** themes). Sizes `--nk-fs-display|h1|h2|h3|h4|lead|body|sm|caption|overline|data`;
+     weights `--nk-fw-light|regular|medium|semi|bold`; line-heights `--nk-lh-tight|snug|body`.
    - **Space** `--nk-space-1` … `--nk-space-16` (4px base); **radius** `--nk-radius-sm|--nk-radius|--nk-radius-lg|--nk-radius-pill`;
-     **border** `--nk-border`; **elevation** `--nk-shadow-sm|--nk-shadow|--nk-shadow-lg`.
+     **border** `--nk-border`; **elevation** `--nk-shadow-sm|--nk-shadow|--nk-shadow-lg`; **focus** `--nk-ring`.
    - **Numbers:** put `font-variant-numeric: var(--nk-num)` (tabular + lining) on any figure or
      column so decimals align — it's a brand rule, not a preference.
 
-## The Stage theme — presentation / teaching mode
-
-For slides and teaching (not reports), opt into the **Stage theme** by setting
-`data-nk-theme="stage"` on a container — same mechanism as `dark`, but a bolder voice:
-a **black stage**, **Poppins** display + interface type, and a **yellow spotlight**. Every
-component rethemes automatically (they read the remapped tokens), and the type scale jumps to
-projector sizes. Keep the default light theme for reports; switch to stage per subtree only.
-
-- **Type:** `--nk-font-stage` (Poppins → IBM Plex Sans fallback) drives both display and sans
-  inside the stage; **`--nk-font-mono` (IBM Plex Mono) still carries data/figures.**
-- **Stage palette** (available in every theme, e.g. for slide charts — assign by entity, don't
-  cycle): `--nk-stage-black`, `--nk-stage-yellow` (headline/spotlight), `--nk-stage-blue`
-  (section titles), `--nk-stage-green`, `--nk-stage-lime`, `--nk-stage-red`, `--nk-stage-orange`,
-  `--nk-stage-turquoise`, `--nk-stage-gray`, `--nk-stage-muted` (secondary text on black).
-- **Brand roles remap inside `[data-nk-theme="stage"]`** so existing components just work:
-  `--nk-navy`→blue, `--nk-teal`→turquoise, `--nk-amber`→yellow, `--nk-coral`→red,
-  `--nk-verdant`→green; surfaces go to near-black. Keep using the semantic tokens
-  (`--nk-navy`, `--nk-teal`, …) and let the theme do the remap — don't hard-code stage hex.
-
-```jsx
-<section data-nk-theme="stage" style={{ padding: "var(--nk-space-10)", fontFamily: "var(--nk-font-stage)" }}>
-  <StatTile label="Model AUC" value="0.94" delta={{ value: "+0.06", dir: "up" }} />
-  <Callout kind="result">Effect survives instructor fixed effects (p = 0.004).</Callout>
-</section>
-```
+3. **Stage utility classes** — the signature deck moves, global in every theme. This is the whole
+   class vocabulary; there are no other `.nk-*` classes and no utility system:
+   | Class | Use |
+   |---|---|
+   | `.nk-spotlight` | title-slide headline word: huge, yellow, underlined |
+   | `.nk-em` (`--lime`, `--blue`, `--orange`) | mid-sentence keyword: bolder, 1.2em, colored |
+   | `.nk-highlight` | solid orange block carrying a white keyword |
+   | `.nk-chip` (`--green`, `--turquoise`, `--brown`) | rounded pill label for sections/steps/banners |
+   | `.nk-step` | small yellow dot with a black number, for process diagrams |
 
 ## Where the truth lives
 
@@ -76,10 +80,11 @@ Read `styles.css` and its `@import`ed files for the full token set, and each com
 ## Idiomatic snippet
 
 ```jsx
-// DS components for the parts; --nk-* tokens for your own layout.
-<div style={{ display: "grid", gap: "var(--nk-space-5)", fontFamily: "var(--nk-font-sans)" }}>
-  <StatTile label="Model AUC" value="0.94" delta={{ value: "+0.06", dir: "up" }} note="vs. baseline" />
-  <Callout kind="method">Non-parametric first: Wilcoxon signed-rank for small n.</Callout>
+// DS components for the parts; --nk-* tokens for your own layout. Stage is the default.
+<section style={{ display: "grid", gap: "var(--nk-space-5)", padding: "var(--nk-space-10)" }}>
+  <h2><span className="nk-spotlight">Retrieval practice</span> moves the needle</h2>
+  <StatTile label="Effect size" value="0.42" unit="SD" delta={{ value: "+0.11", dir: "up" }} note="95% CI 0.28–0.56" />
+  <Callout kind="result">Effect survives instructor fixed effects (p = 0.004).</Callout>
   <Button variant="accent">Run analysis</Button>
-</div>
+</section>
 ```

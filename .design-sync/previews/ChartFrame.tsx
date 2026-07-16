@@ -1,5 +1,13 @@
 import { ChartFrame } from 'nukleyo-ds';
 
+// The card harness paints its own white body, so each story paints the stage
+// (--nk-paper) itself — the default theme's text tokens are light.
+const Stage = ({ children, style }: { children?: React.ReactNode; style?: React.CSSProperties }) => (
+  <div style={{ background: 'var(--nk-paper)', padding: 'var(--nk-space-6)', borderRadius: 'var(--nk-radius)', ...style }}>
+    {children}
+  </div>
+);
+
 const Bars = () => {
   const data = [
     { label: 'Logistic', v: 0.881 },
@@ -27,7 +35,7 @@ const Bars = () => {
 };
 
 export const WithChart = () => (
-  <div style={{ maxWidth: 420 }}>
+  <Stage style={{ maxWidth: 420 }}>
     <ChartFrame
       figureNumber={2}
       title="Model discrimination (AUC) on the 2024 held-out cohort."
@@ -35,5 +43,5 @@ export const WithChart = () => (
     >
       <Bars />
     </ChartFrame>
-  </div>
+  </Stage>
 );
