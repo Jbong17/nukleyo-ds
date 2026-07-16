@@ -31,6 +31,60 @@ Both themes remap the **same semantic tokens**, so components just work in eithe
 `--nk-navy` / `--nk-teal` / `--nk-ink` and let the theme do the remap. Never hard-code stage hex.
 There is **no `dark` theme** — Stage is already black.
 
+## The deck voice — this is the DEFAULT, and it is not optional
+
+This DS exists to build **teaching decks**. **Tokens alone are not the brand.** Black background +
+Poppins gets you *generic dark*; it is **off-brand**. The signature lives in the stage classes below,
+and **a slide that uses none of them has failed** — even when every colour came from a token.
+A bare white `<h1>` on black is the single most common way to get this wrong.
+
+When you build a slide, deck, presentation, or section header:
+
+- **Spotlight the headline. Always.** Every slide title puts its load-bearing word(s) in
+  `.nk-spotlight` (yellow, underlined). Never ship a bare white headline.
+- **Section/topic labels are chips, not plain text.** A topic label is a bare `.nk-chip` (slate);
+  a recurring banner ("Review", "Results", "Method") is `.nk-chip--green`.
+- **Sub-headings are blue** — `color: var(--nk-stage-blue)` — not white.
+- **One hot word per line, max.** `.nk-em` (yellow) for a key term; `.nk-highlight` (orange bar)
+  for the single word a slide turns on. Never both in one line.
+- **Term + definition:** the term in `.nk-em`, the definition in plain `--nk-ink` beneath it.
+- **Numbered process:** a `.nk-step` dot paired with a bare `.nk-chip` label, one row per step.
+- **Bright positive / organic display words** go `.nk-em--lime` ("AGRICULTURE", "Food Crops").
+- **Cutout images, logos, specimens** get `.nk-glow`.
+- **Red is the alarm** (`.nk-em--red`): a "VS" contrast, a named threat, a one-word shock headline.
+
+### Title-slide recipe — copy this shape
+
+```jsx
+<section style={{ padding: "var(--nk-space-16)" }}>
+  <span className="nk-chip nk-chip--green">Module 1</span>
+  <h1 style={{ fontSize: "var(--nk-fs-display)", lineHeight: "var(--nk-lh-tight)",
+               fontFamily: "var(--nk-font-display)", margin: "var(--nk-space-6) 0" }}>
+    Nuclear Science in <span className="nk-spotlight">Agriculture</span>
+    {" "}& the <span className="nk-spotlight">Environment</span>
+  </h1>
+  <p style={{ color: "var(--nk-stage-blue)", fontSize: "var(--nk-fs-lead)" }}>
+    Nuclear Forensics and AI
+  </p>
+  <p style={{ color: "var(--nk-stage-muted)", fontSize: "var(--nk-fs-sm)" }}>
+    Jerald B. Bongalos · DOST-NRCP
+  </p>
+</section>
+```
+
+### Content-slide recipe
+
+```jsx
+<section style={{ padding: "var(--nk-space-12)" }}>
+  <span className="nk-chip nk-chip--green">Review</span>
+  <h2 style={{ fontSize: "var(--nk-fs-h1)" }}>
+    <span className="nk-spotlight">Radioactivity</span>
+  </h2>
+  <p><span className="nk-em">Spontaneous emission</span> of radiation from
+     <span className="nk-highlight">unstable</span> atomic nuclei.</p>
+</section>
+```
+
 ## The styling idiom — component props, tokens, and the stage classes
 
 There are **no style-system props**. The design language is carried three ways:

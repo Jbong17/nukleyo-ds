@@ -218,6 +218,15 @@
 body {
   background: var(--nk-paper);
   color: var(--nk-ink);
+  /* Establish the typographic voice too, not just the colours. Without these,
+     every unstyled <p>/<li>/<td> falls back to the browser default — Times at
+     16px — which is how a "black + Poppins" page still ends up off-brand.
+     All four values are theme-scoped, so a data-nk-theme="scholarly" subtree
+     re-establishes its own voice (IBM Plex Sans at 16px). */
+  font-family: var(--nk-font-sans);
+  font-size: var(--nk-fs-body);
+  line-height: var(--nk-lh-body);
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ============================================================================
