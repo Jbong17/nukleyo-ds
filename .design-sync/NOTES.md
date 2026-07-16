@@ -28,12 +28,27 @@ Repo-specific gotchas for future syncs. Append whenever something is learned.
   `cfg.extraFonts`. Weights: Sans 300/400/500/600/700, Serif 400/500/600, Mono 400/500.
   Italic serif NOT shipped — `ChartFrame` figure title uses `font-style: italic` and will render
   browser-synthesized oblique (acceptable; add serif-italic-400 if fidelity demands).
+- **Poppins (latin, SIL OFL) vendored 2026-07-16** in `.design-sync/fonts/` (weights 400/500/600/
+  700/800) + `poppins.css`, wired via `cfg.extraFonts`. Needed by the **Stage theme**
+  (`--nk-font-stage`, `data-nk-theme="stage"`) added in commit c39a571 — validate flagged
+  `[FONT_MISSING] Poppins` before vendoring. Fetched from Google Fonts (v24 woff2). Fallback is
+  IBM Plex Sans (shipped). No italic/other weights.
 
 ## Upload
-- This first build was produced **locally with no upload** — the running session had no Claude
-  Design authorization (`/design-login` needs an interactive terminal). `ds-bundle/` is
-  ready to upload; re-run `/design-sync` from an interactive `claude` terminal to create the
-  project and push. No `projectId` recorded yet.
+- **Uploaded 2026-07-16** to existing project `45e5d00b-02d7-42d9-a487-c1fd26621aad`
+  ("Nukleyo Design System"), now pinned as `cfg.projectId`. The prior NOTES said "never
+  uploaded / no projectId" — but the remote already held an OLD-converter sync of this DS
+  (flat `components/<group>/<Name>.*` + `<group>.card.html`, fonts under `assets/fonts/`),
+  plus the user's own work (`templates/` decks, `ui_kits/report`, `uploads/`, `SKILL.md`,
+  `style-guide.html`, `guidelines/*.html`, `tokens/`). The config's projectId had simply been
+  lost — this run was effectively a re-sync with a missing anchor (no `_ds_sync.json` remote).
+- **Atomic path** (non-empty target, not pinned-before-run). No remote anchor, so deletes were
+  hand-derived from `list_files`: deleted ONLY the old flat-layout component files
+  (`components/{actions,brand,data,display,forms}/**`, ~39 files) because the new build writes
+  the nested layout `components/general/<Name>/<Name>.*` and stale old cards would double-index.
+  **Everything else was left untouched** — the user's decks/uploads/ui_kits, and harmless DS
+  orphans (old `tokens/`, `assets/fonts/`, `guidelines/*.html`, `readme.md`) that don't collide
+  with new paths. `_ds_manifest.json` / `_adherence.oxlintrc.json` are regenerated server-side.
 
 ## Verification state (this run)
 - All **11 components authored** (`.design-sync/previews/*.tsx`) and graded **good** (23 cells).
@@ -55,4 +70,17 @@ Repo-specific gotchas for future syncs. Append whenever something is learned.
 - **Toolchain is local & un-pinned:** Node 20 in `~/.local`, converter deps in `.ds-sync/`, React 18
   + Playwright/Chromium installed this run. A fresh clone re-installs all of it (`.ds-sync/`,
   `node_modules/`, browser cache are gitignored).
-- **Not a git repo.** The skill's commit/PR steps don't apply until `git init`. `.gitignore` is in place.
+- **Conventions header lags the Stage theme.** `.design-sync/conventions.md` documents the light
+  theme + `data-nk-theme="dark"` but NOT `data-nk-theme="stage"` (Poppins). All names it DOES
+  cite still verify against the build (no drift). Proposed addition for a future edit: a short
+  Stage-theme section so the design agent can use the presentation mode. Content belongs to its
+  author — not rewritten automatically.
+- **Poppins is latin-only + network-fetched** (Google Fonts v24). A fresh clone has the woff2
+  committed under `.design-sync/fonts/`, so no re-fetch needed unless weights/coverage change.
+- **Remote holds old-layout orphans** (`guidelines/*.html`, `tokens/`, `assets/fonts/`,
+  `readme.md`, `style-guide.html`) from the pre-nested converter sync. Left in place deliberately
+  (non-colliding; possibly referenced by the user's decks). A future anchored re-sync's diff will
+  NOT see them (the anchor only records this run's files) — they persist harmlessly. Delete by
+  hand only if a pristine project is wanted.
+- **This IS now a git repo** (commits present). Durable design-sync inputs are committed; machine
+  state is gitignored.

@@ -1,11 +1,12 @@
 {
+  "projectId": "45e5d00b-02d7-42d9-a487-c1fd26621aad",
   "pkg": "nukleyo-ds",
   "globalName": "NukleyoDS",
   "shape": "package",
   "entry": "./components/index.js",
   "cssEntry": "tokens.css",
   "readmeHeader": ".design-sync/conventions.md",
-  "extraFonts": [".design-sync/fonts/ibm-plex.css"],
+  "extraFonts": [".design-sync/fonts/ibm-plex.css", ".design-sync/fonts/poppins.css"],
   "overrides": {
     "DataTable": { "cardMode": "column" },
     "StatTile": { "cardMode": "column" }

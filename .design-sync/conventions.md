@@ -42,6 +42,32 @@ two ways:
    - **Numbers:** put `font-variant-numeric: var(--nk-num)` (tabular + lining) on any figure or
      column so decimals align — it's a brand rule, not a preference.
 
+## The Stage theme — presentation / teaching mode
+
+For slides and teaching (not reports), opt into the **Stage theme** by setting
+`data-nk-theme="stage"` on a container — same mechanism as `dark`, but a bolder voice:
+a **black stage**, **Poppins** display + interface type, and a **yellow spotlight**. Every
+component rethemes automatically (they read the remapped tokens), and the type scale jumps to
+projector sizes. Keep the default light theme for reports; switch to stage per subtree only.
+
+- **Type:** `--nk-font-stage` (Poppins → IBM Plex Sans fallback) drives both display and sans
+  inside the stage; **`--nk-font-mono` (IBM Plex Mono) still carries data/figures.**
+- **Stage palette** (available in every theme, e.g. for slide charts — assign by entity, don't
+  cycle): `--nk-stage-black`, `--nk-stage-yellow` (headline/spotlight), `--nk-stage-blue`
+  (section titles), `--nk-stage-green`, `--nk-stage-lime`, `--nk-stage-red`, `--nk-stage-orange`,
+  `--nk-stage-turquoise`, `--nk-stage-gray`, `--nk-stage-muted` (secondary text on black).
+- **Brand roles remap inside `[data-nk-theme="stage"]`** so existing components just work:
+  `--nk-navy`→blue, `--nk-teal`→turquoise, `--nk-amber`→yellow, `--nk-coral`→red,
+  `--nk-verdant`→green; surfaces go to near-black. Keep using the semantic tokens
+  (`--nk-navy`, `--nk-teal`, …) and let the theme do the remap — don't hard-code stage hex.
+
+```jsx
+<section data-nk-theme="stage" style={{ padding: "var(--nk-space-10)", fontFamily: "var(--nk-font-stage)" }}>
+  <StatTile label="Model AUC" value="0.94" delta={{ value: "+0.06", dir: "up" }} />
+  <Callout kind="result">Effect survives instructor fixed effects (p = 0.004).</Callout>
+</section>
+```
+
 ## Where the truth lives
 
 Read `styles.css` and its `@import`ed files for the full token set, and each component's
