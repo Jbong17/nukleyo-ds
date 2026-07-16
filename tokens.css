@@ -1,162 +1,24 @@
 /* ============================================================================
    NUKLEYO DESIGN SYSTEM — tokens.css
    Jerald B. Bongalos · Nukleyo Decision Science
-   The visual vocabulary for a data-scientist–educator brand.
-   Concept: a dense navy "nucleus" (rigor, depth) with a teal analytical
-   signal and an amber spark of insight. Cool, disciplined, legible.
+   A data-scientist–educator brand with two voices:
+
+     • STAGE (DEFAULT) — the presentation voice. A black stage, bold Poppins,
+       and a yellow spotlight, derived from JBong's live decks. This is what
+       every design gets unless it opts out.
+     • SCHOLARLY — the quiet document voice. Navy nucleus, IBM Plex Serif,
+       teal signal on white paper. Opt in for reports:  data-nk-theme="scholarly"
+
    All design decisions resolve to a token below. Edit a hex here and it
    propagates through every component.
    ============================================================================ */
 
 :root {
-  /* --- Brand core ------------------------------------------------------- */
-  --nk-abyss:      #071B2E;   /* deepest ink / footers */
-  --nk-navy:       #0E2F4C;   /* PRIMARY — authority, structure */
-  --nk-navy-600:   #164A73;   /* navy hover / secondary depth */
-  --nk-teal:       #0E7C86;   /* ACCENT — analysis, the working signal */
-  --nk-teal-400:   #3AA9AC;   /* light teal / hover */
-  --nk-amber:      #E4A44C;   /* HIGHLIGHT — insight, the nucleus spark */
-  --nk-coral:      #D75A4A;   /* emphasis / caution */
-  --nk-verdant:    #2F9E6B;   /* organic / positive (a nod to radiobiology) */
+  /* ==========================================================================
+     THEME-INVARIANT TOKENS — identical in every theme
+     ========================================================================== */
 
-  /* --- Neutrals (cool, navy-tinted) ------------------------------------ */
-  --nk-ink:        #0F1E2A;   /* primary text */
-  --nk-graphite:   #33475A;   /* strong secondary text */
-  --nk-slate:      #5E7180;   /* muted text, captions */
-  --nk-silver:     #AEBDC7;   /* strong borders, disabled */
-  --nk-mist:       #E7EDF1;   /* hairline borders, subtle fills */
-  --nk-paper:      #F6F9FB;   /* page background */
-  --nk-white:      #FFFFFF;   /* card surface */
-
-  /* --- Semantic roles --------------------------------------------------- */
-  --nk-info:       var(--nk-teal);
-  --nk-success:    var(--nk-verdant);
-  --nk-warning:    var(--nk-amber);
-  --nk-danger:     var(--nk-coral);
-
-  /* pale role tints (for callouts, badges) */
-  --nk-info-bg:    #E1F1F2;
-  --nk-success-bg: #E4F3EC;
-  --nk-warning-bg: #FBF0DE;
-  --nk-danger-bg:  #FBE8E4;
-  --nk-navy-bg:    #E9EEF3;
-  --nk-teal-bg:    #E1F1F2;
-
-  /* --- Data-visualization categorical palette (fixed order, never cycled) */
-  --nk-viz-1: #0E2F4C;   /* navy      */
-  --nk-viz-2: #0E7C86;   /* teal      */
-  --nk-viz-3: #E4A44C;   /* amber     */
-  --nk-viz-4: #D75A4A;   /* coral     */
-  --nk-viz-5: #5B7DA6;   /* slate-blue*/
-  --nk-viz-6: #2F9E6B;   /* verdant   */
-  --nk-viz-7: #7A5C9E;   /* plum      */
-  --nk-viz-8: #B4794A;   /* clay      */
-
-  /* sequential teal ramp (magnitude / heatmaps / choropleths) */
-  --nk-seq-1: #E1F1F2;
-  --nk-seq-2: #A9DBDD;
-  --nk-seq-3: #6FC2C6;
-  --nk-seq-4: #35A2A8;
-  --nk-seq-5: #0E7C86;
-  --nk-seq-6: #0A5A62;
-  --nk-seq-7: #06393E;
-
-  /* diverging (below <-> above a baseline; neutral gray midpoint) */
-  --nk-div-neg: #D75A4A;
-  --nk-div-mid: #EEF2F4;
-  --nk-div-pos: #0E7C86;
-
-  /* --- Typography ------------------------------------------------------- */
-  --nk-font-display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
-  --nk-font-sans:    "IBM Plex Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  --nk-font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-
-  --nk-fs-display: 3rem;      /* 48 */
-  --nk-fs-h1:      2.125rem;  /* 34 */
-  --nk-fs-h2:      1.625rem;  /* 26 */
-  --nk-fs-h3:      1.25rem;   /* 20 */
-  --nk-fs-h4:      1.0625rem; /* 17 */
-  --nk-fs-lead:    1.125rem;  /* 18 */
-  --nk-fs-body:    1rem;      /* 16 */
-  --nk-fs-sm:      0.875rem;  /* 14 */
-  --nk-fs-caption: 0.8125rem; /* 13 */
-  --nk-fs-overline:0.75rem;   /* 12 */
-  --nk-fs-data:    0.9375rem; /* 15 — mono/tabular */
-
-  --nk-lh-tight: 1.15;
-  --nk-lh-snug:  1.35;
-  --nk-lh-body:  1.6;
-
-  --nk-fw-light:  300;
-  --nk-fw-regular:400;
-  --nk-fw-medium: 500;
-  --nk-fw-semi:   600;
-  --nk-fw-bold:   700;
-
-  --nk-track-tight:  -0.01em;
-  --nk-track-over:    0.09em;  /* overline / eyebrow */
-
-  /* tabular figures — lock this on all numeric UI so columns align */
-  --nk-num: "tnum" 1, "lnum" 1;
-
-  /* --- Spacing (4px base) ---------------------------------------------- */
-  --nk-space-1:  0.25rem;  /*  4 */
-  --nk-space-2:  0.5rem;   /*  8 */
-  --nk-space-3:  0.75rem;  /* 12 */
-  --nk-space-4:  1rem;     /* 16 */
-  --nk-space-5:  1.25rem;  /* 20 */
-  --nk-space-6:  1.5rem;   /* 24 */
-  --nk-space-8:  2rem;     /* 32 */
-  --nk-space-10: 2.5rem;   /* 40 */
-  --nk-space-12: 3rem;     /* 48 */
-  --nk-space-16: 4rem;     /* 64 */
-
-  /* --- Radii ------------------------------------------------------------ */
-  --nk-radius-sm:   6px;
-  --nk-radius:     10px;   /* default control/card */
-  --nk-radius-lg:  14px;
-  --nk-radius-pill: 999px;
-
-  /* --- Borders ---------------------------------------------------------- */
-  --nk-border:        1px solid var(--nk-mist);
-  --nk-border-strong: 1px solid var(--nk-silver);
-
-  /* --- Elevation (restrained; brand favors flat + hairline) ------------ */
-  --nk-shadow-sm: 0 1px 2px rgba(11,30,50,0.06);
-  --nk-shadow:    0 1px 2px rgba(11,30,50,0.05), 0 6px 16px rgba(11,30,50,0.07);
-  --nk-shadow-lg: 0 2px 6px rgba(11,30,50,0.06), 0 18px 40px rgba(11,30,50,0.10);
-
-  /* focus ring */
-  --nk-ring: 0 0 0 3px rgba(14,124,134,0.30);
-
-  /* motion */
-  --nk-dur: 160ms;
-  --nk-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
-}
-
-/* Optional dark surface (e.g., app chrome / hero). Opt-in via data attribute. */
-[data-nk-theme="dark"] {
-  --nk-ink:      #EAF1F6;
-  --nk-graphite: #C4D2DC;
-  --nk-slate:    #93A5B1;
-  --nk-mist:     #1C3446;
-  --nk-silver:   #2C475C;
-  --nk-paper:    #0A1E30;
-  --nk-white:    #0E2A41;
-  --nk-navy:     #2E7BB8;
-  --nk-teal:     #3AA9AC;
-}
-
-/* ============================================================================
-   STAGE THEME — presentation / teaching mode
-   The Nukleyo voice on stage: black stage, bold Poppins, a yellow spotlight.
-   Derived from JBong's live decks (Nuclear Science in Agriculture & the
-   Environment, 2026). Opt in per subtree:  <section data-nk-theme="stage">
-   All components retheme automatically — they read the vars remapped below.
-   ============================================================================ */
-
-:root {
-  /* --- Stage palette (available in every theme, e.g. slide charts) ------ */
+  /* --- Stage palette (raw hues; available everywhere, e.g. slide charts) --- */
   --nk-stage-black:     #000000;   /* the stage itself */
   --nk-stage-yellow:    #FFDE59;   /* headline / spotlight emphasis */
   --nk-stage-blue:      #38B6FF;   /* section titles, cool pop */
@@ -168,27 +30,93 @@
   --nk-stage-gray:      #717D82;   /* neutral chips / step rails */
   --nk-stage-muted:     #B8C4CA;   /* secondary text on black */
 
-  /* Bold rounded geometric sans for the stage voice */
-  --nk-font-stage: "Poppins", "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  /* --- Scholarly palette (raw hues; kept for the opt-in document theme) ---- */
+  --nk-brand-navy:   #0E2F4C;
+  --nk-brand-teal:   #0E7C86;
+  --nk-brand-amber:  #E4A44C;
+  --nk-brand-coral:  #D75A4A;
+
+  /* --- Semantic roles (resolve through the active theme's brand vars) ------ */
+  --nk-info:       var(--nk-teal);
+  --nk-success:    var(--nk-verdant);
+  --nk-warning:    var(--nk-amber);
+  --nk-danger:     var(--nk-coral);
+
+  /* --- Fonts ---------------------------------------------------------------- */
+  --nk-font-stage:   "Poppins", "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --nk-font-serif:   "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --nk-font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* --- Type sizes that don't change between themes -------------------------- */
+  --nk-fs-h4:      1.0625rem; /* 17 */
+  --nk-fs-sm:      0.875rem;  /* 14 */
+  --nk-fs-caption: 0.8125rem; /* 13 */
+  --nk-fs-overline:0.75rem;   /* 12 */
+  --nk-fs-data:    0.9375rem; /* 15 — mono/tabular */
+
+  --nk-lh-tight: 1.15;
+  --nk-lh-snug:  1.35;
+
+  --nk-fw-regular:400;
+  --nk-fw-medium: 500;
+  --nk-fw-semi:   600;
+  --nk-fw-bold:   700;
+
+  --nk-track-tight:  -0.01em;
+  --nk-track-over:    0.09em;  /* overline / eyebrow */
+
+  /* tabular figures — lock this on all numeric UI so columns align */
+  --nk-num: "tnum" 1, "lnum" 1;
+
+  /* --- Sequential + diverging ends (teal ramp; same in both themes) -------- */
+  --nk-seq-1: #E1F1F2; --nk-seq-2: #A9DBDD; --nk-seq-3: #6FC2C6;
+  --nk-seq-4: #35A2A8; --nk-seq-5: #0E7C86; --nk-seq-6: #0A5A62; --nk-seq-7: #06393E;
+  --nk-div-neg: #D75A4A;
+  --nk-div-pos: #0E7C86;
+
+  /* --- Spacing (4px base) --------------------------------------------------- */
+  --nk-space-1:  0.25rem; --nk-space-2:  0.5rem;  --nk-space-3:  0.75rem;
+  --nk-space-4:  1rem;    --nk-space-5:  1.25rem; --nk-space-6:  1.5rem;
+  --nk-space-8:  2rem;    --nk-space-10: 2.5rem;  --nk-space-12: 3rem; --nk-space-16: 4rem;
+
+  /* --- Radii ---------------------------------------------------------------- */
+  --nk-radius-sm:   6px;
+  --nk-radius:     10px;   /* default control/card */
+  --nk-radius-lg:  14px;
+  --nk-radius-pill: 999px;
+
+  /* --- Borders (reference the active theme's neutral vars, so auto-theme) --- */
+  --nk-border:        1px solid var(--nk-mist);
+  --nk-border-strong: 1px solid var(--nk-silver);
+
+  /* --- Motion --------------------------------------------------------------- */
+  --nk-dur: 160ms;
+  --nk-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
+/* ============================================================================
+   DEFAULT THEME = STAGE
+   Applied to :root (the default) AND to any explicit data-nk-theme="stage"
+   subtree (so a Stage island still works inside a Scholarly page).
+   ============================================================================ */
+:root,
 [data-nk-theme="stage"] {
-  /* --- Surfaces & text on black ----------------------------------------- */
-  --nk-paper:    #000000;
-  --nk-white:    #0D1214;   /* card surface: near-black panel */
+  /* --- Surfaces & text on black -------------------------------------------- */
   --nk-abyss:    #000000;
-  --nk-ink:      #FFFFFF;
-  --nk-graphite: #DDE5E9;
-  --nk-slate:    #B8C4CA;
-  --nk-silver:   #4A565C;
-  --nk-mist:     #22282B;
+  --nk-paper:    #000000;   /* page / stage background */
+  --nk-white:    #0D1214;   /* card surface: near-black panel */
+  --nk-ink:      #FFFFFF;   /* primary text */
+  --nk-graphite: #DDE5E9;   /* strong secondary text */
+  --nk-slate:    #B8C4CA;   /* muted text, captions */
+  --nk-silver:   #4A565C;   /* strong borders, disabled */
+  --nk-mist:     #22282B;   /* hairline borders, subtle fills */
 
-  /* --- Brand roles remapped to deck energy ------------------------------ */
+  /* --- Brand roles remapped to deck energy --------------------------------- */
   --nk-navy:     #38B6FF;   /* structural headings pop blue on black */
   --nk-navy-600: #6FCBFF;
   --nk-teal:     #0CC0DF;
   --nk-teal-400: #55D4EA;
-  --nk-amber:    #FFDE59;
+  --nk-amber:    #FFDE59;   /* the spotlight */
   --nk-coral:    #FF3131;
   --nk-verdant:  #00BF63;
 
@@ -200,10 +128,10 @@
   --nk-navy-bg:    #0E2233;
   --nk-teal-bg:    #0B2A30;
 
-  /* --- Typography: everything Poppins, bigger and heavier --------------- */
+  /* --- Typography: Poppins, big and projector-legible ---------------------- */
   --nk-font-display: var(--nk-font-stage);
   --nk-font-sans:    var(--nk-font-stage);
-  --nk-fs-display: 4.25rem;   /* 68 — projector scale */
+  --nk-fs-display: 4.25rem;   /* 68 */
   --nk-fs-h1:      3rem;      /* 48 */
   --nk-fs-h2:      2.125rem;  /* 34 */
   --nk-fs-h3:      1.5rem;    /* 24 */
@@ -212,30 +140,81 @@
   --nk-lh-body:    1.45;
   --nk-fw-light:   400;       /* no light weights on a projector */
 
-  /* --- Chrome ------------------------------------------------------------ */
-  --nk-border:        1px solid #22282B;
-  --nk-border-strong: 1px solid #4A565C;
+  /* --- Chrome -------------------------------------------------------------- */
   --nk-shadow-sm: none;
   --nk-shadow:    none;
   --nk-shadow-lg: 0 0 40px rgba(255,222,89,0.10);   /* soft spotlight glow */
   --nk-ring:      0 0 0 3px rgba(255,222,89,0.40);
 
-  /* --- Data-viz reordered for black backgrounds -------------------------- */
-  --nk-viz-1: #FFDE59;
-  --nk-viz-2: #38B6FF;
-  --nk-viz-3: #00BF63;
-  --nk-viz-4: #FF914D;
-  --nk-viz-5: #FF3131;
-  --nk-viz-6: #0CC0DF;
-  --nk-viz-7: #7ED957;
-  --nk-viz-8: #B8C4CA;
+  /* --- Data-viz ordered for black backgrounds ------------------------------ */
+  --nk-viz-1: #FFDE59; --nk-viz-2: #38B6FF; --nk-viz-3: #00BF63; --nk-viz-4: #FF914D;
+  --nk-viz-5: #FF3131; --nk-viz-6: #0CC0DF; --nk-viz-7: #7ED957; --nk-viz-8: #B8C4CA;
   --nk-div-mid: #22282B;
 }
 
-/* --- Stage utility classes (signature deck moves) ------------------------ */
+/* ============================================================================
+   SCHOLARLY THEME (opt-in) — the quiet document voice for reports & memos.
+   Usage:  <article data-nk-theme="scholarly"> … </article>
+   Restores the original navy / serif / teal-on-white system.
+   ============================================================================ */
+[data-nk-theme="scholarly"] {
+  /* --- Surfaces & text ----------------------------------------------------- */
+  --nk-abyss:    #071B2E;
+  --nk-paper:    #F6F9FB;
+  --nk-white:    #FFFFFF;
+  --nk-ink:      #0F1E2A;
+  --nk-graphite: #33475A;
+  --nk-slate:    #5E7180;
+  --nk-silver:   #AEBDC7;
+  --nk-mist:     #E7EDF1;
+
+  /* --- Brand roles --------------------------------------------------------- */
+  --nk-navy:     #0E2F4C;
+  --nk-navy-600: #164A73;
+  --nk-teal:     #0E7C86;
+  --nk-teal-400: #3AA9AC;
+  --nk-amber:    #E4A44C;
+  --nk-coral:    #D75A4A;
+  --nk-verdant:  #2F9E6B;
+
+  /* pale role tints */
+  --nk-info-bg:    #E1F1F2;
+  --nk-success-bg: #E4F3EC;
+  --nk-warning-bg: #FBF0DE;
+  --nk-danger-bg:  #FBE8E4;
+  --nk-navy-bg:    #E9EEF3;
+  --nk-teal-bg:    #E1F1F2;
+
+  /* --- Typography: serif display, sans interface --------------------------- */
+  --nk-font-display: var(--nk-font-serif);
+  --nk-font-sans:    "IBM Plex Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --nk-fs-display: 3rem;      /* 48 */
+  --nk-fs-h1:      2.125rem;  /* 34 */
+  --nk-fs-h2:      1.625rem;  /* 26 */
+  --nk-fs-h3:      1.25rem;   /* 20 */
+  --nk-fs-lead:    1.125rem;  /* 18 */
+  --nk-fs-body:    1rem;      /* 16 */
+  --nk-lh-body:    1.6;
+  --nk-fw-light:   300;
+
+  /* --- Chrome (restrained; flat + hairline) -------------------------------- */
+  --nk-shadow-sm: 0 1px 2px rgba(11,30,50,0.06);
+  --nk-shadow:    0 1px 2px rgba(11,30,50,0.05), 0 6px 16px rgba(11,30,50,0.07);
+  --nk-shadow-lg: 0 2px 6px rgba(11,30,50,0.06), 0 18px 40px rgba(11,30,50,0.10);
+  --nk-ring:      0 0 0 3px rgba(14,124,134,0.30);
+
+  /* --- Data-viz (navy-teal-amber categorical) ------------------------------ */
+  --nk-viz-1: #0E2F4C; --nk-viz-2: #0E7C86; --nk-viz-3: #E4A44C; --nk-viz-4: #D75A4A;
+  --nk-viz-5: #5B7DA6; --nk-viz-6: #2F9E6B; --nk-viz-7: #7A5C9E; --nk-viz-8: #B4794A;
+  --nk-div-mid: #EEF2F4;
+}
+
+/* ============================================================================
+   STAGE UTILITY CLASSES (signature deck moves) — work by default everywhere.
+   ============================================================================ */
 
 /* Headline word: huge, yellow, underlined — the title-slide treatment */
-[data-nk-theme="stage"] .nk-spotlight {
+.nk-spotlight {
   font-family: var(--nk-font-stage);
   font-weight: 700;
   color: var(--nk-stage-yellow);
@@ -245,13 +224,13 @@
 }
 
 /* Mid-sentence emphasis: the keyword jumps out bigger and colored */
-[data-nk-theme="stage"] .nk-em         { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-yellow); }
-[data-nk-theme="stage"] .nk-em--lime   { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-lime); }
-[data-nk-theme="stage"] .nk-em--blue   { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-blue); }
-[data-nk-theme="stage"] .nk-em--orange { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-orange); }
+.nk-em         { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-yellow); }
+.nk-em--lime   { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-lime); }
+.nk-em--blue   { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-blue); }
+.nk-em--orange { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-orange); }
 
 /* Highlight bar: solid orange block carrying a white keyword */
-[data-nk-theme="stage"] .nk-highlight {
+.nk-highlight {
   background: var(--nk-stage-orange);
   color: #FFFFFF;
   font-weight: 700;
@@ -261,7 +240,7 @@
 }
 
 /* Pill chips: rounded labels for sections, steps, and banners */
-[data-nk-theme="stage"] .nk-chip {
+.nk-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
@@ -273,12 +252,12 @@
   border-radius: var(--nk-radius-pill);
   padding: 0.3em 0.9em;
 }
-[data-nk-theme="stage"] .nk-chip--green     { background: var(--nk-stage-green); }
-[data-nk-theme="stage"] .nk-chip--turquoise { background: var(--nk-stage-turquoise); }
-[data-nk-theme="stage"] .nk-chip--brown     { background: #8A6240; }
+.nk-chip--green     { background: var(--nk-stage-green); }
+.nk-chip--turquoise { background: var(--nk-stage-turquoise); }
+.nk-chip--brown     { background: #8A6240; }
 
 /* Step marker: small yellow dot with a black number (process diagrams) */
-[data-nk-theme="stage"] .nk-step {
+.nk-step {
   display: inline-grid;
   place-items: center;
   width: 1.6em; height: 1.6em;
