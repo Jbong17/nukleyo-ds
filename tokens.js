@@ -78,4 +78,30 @@ export const shadow = {
   lg: "0 2px 6px rgba(11,30,50,0.06), 0 18px 40px rgba(11,30,50,0.10)",
 };
 
-export default { color, semantic, vizCategorical, vizSequential, vizDiverging, font, fontSize, weight, space, radius, shadow };
+
+// ----------------------------------------------------------------------------
+// STAGE THEME — presentation / teaching mode (black stage, Poppins, spotlight)
+// Mirrors the [data-nk-theme="stage"] block in tokens.css.
+// ----------------------------------------------------------------------------
+export const stage = {
+  bg:        "#000000",
+  surface:   "#0D1214",
+  text:      "#FFFFFF",
+  muted:     "#B8C4CA",
+  yellow:    "#FFDE59",
+  blue:      "#38B6FF",
+  green:     "#00BF63",
+  lime:      "#7ED957",
+  red:       "#FF3131",
+  orange:    "#FF914D",
+  turquoise: "#0CC0DF",
+  gray:      "#717D82",
+  font: '"Poppins", "IBM Plex Sans", system-ui, -apple-system, sans-serif',
+  // categorical order tuned for black backgrounds
+  vizCategorical: [
+    "#FFDE59", "#38B6FF", "#00BF63", "#FF914D",
+    "#FF3131", "#0CC0DF", "#7ED957", "#B8C4CA",
+  ],
+};
+
+export default { stage, color, semantic, vizCategorical, vizSequential, vizDiverging, font, fontSize, weight, space, radius, shadow };

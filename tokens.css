@@ -146,3 +146,145 @@
   --nk-navy:     #2E7BB8;
   --nk-teal:     #3AA9AC;
 }
+
+/* ============================================================================
+   STAGE THEME — presentation / teaching mode
+   The Nukleyo voice on stage: black stage, bold Poppins, a yellow spotlight.
+   Derived from JBong's live decks (Nuclear Science in Agriculture & the
+   Environment, 2026). Opt in per subtree:  <section data-nk-theme="stage">
+   All components retheme automatically — they read the vars remapped below.
+   ============================================================================ */
+
+:root {
+  /* --- Stage palette (available in every theme, e.g. slide charts) ------ */
+  --nk-stage-black:     #000000;   /* the stage itself */
+  --nk-stage-yellow:    #FFDE59;   /* headline / spotlight emphasis */
+  --nk-stage-blue:      #38B6FF;   /* section titles, cool pop */
+  --nk-stage-green:     #00BF63;   /* chips, "Review" banners */
+  --nk-stage-lime:      #7ED957;   /* bright positive display text */
+  --nk-stage-red:       #FF3131;   /* process arrows, alerts */
+  --nk-stage-orange:    #FF914D;   /* highlight bars behind keywords */
+  --nk-stage-turquoise: #0CC0DF;   /* pill labels */
+  --nk-stage-gray:      #717D82;   /* neutral chips / step rails */
+  --nk-stage-muted:     #B8C4CA;   /* secondary text on black */
+
+  /* Bold rounded geometric sans for the stage voice */
+  --nk-font-stage: "Poppins", "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+}
+
+[data-nk-theme="stage"] {
+  /* --- Surfaces & text on black ----------------------------------------- */
+  --nk-paper:    #000000;
+  --nk-white:    #0D1214;   /* card surface: near-black panel */
+  --nk-abyss:    #000000;
+  --nk-ink:      #FFFFFF;
+  --nk-graphite: #DDE5E9;
+  --nk-slate:    #B8C4CA;
+  --nk-silver:   #4A565C;
+  --nk-mist:     #22282B;
+
+  /* --- Brand roles remapped to deck energy ------------------------------ */
+  --nk-navy:     #38B6FF;   /* structural headings pop blue on black */
+  --nk-navy-600: #6FCBFF;
+  --nk-teal:     #0CC0DF;
+  --nk-teal-400: #55D4EA;
+  --nk-amber:    #FFDE59;
+  --nk-coral:    #FF3131;
+  --nk-verdant:  #00BF63;
+
+  /* dark role tints (callouts, badges) */
+  --nk-info-bg:    #0B2733;
+  --nk-success-bg: #0A2C1D;
+  --nk-warning-bg: #332B0D;
+  --nk-danger-bg:  #330F0C;
+  --nk-navy-bg:    #0E2233;
+  --nk-teal-bg:    #0B2A30;
+
+  /* --- Typography: everything Poppins, bigger and heavier --------------- */
+  --nk-font-display: var(--nk-font-stage);
+  --nk-font-sans:    var(--nk-font-stage);
+  --nk-fs-display: 4.25rem;   /* 68 — projector scale */
+  --nk-fs-h1:      3rem;      /* 48 */
+  --nk-fs-h2:      2.125rem;  /* 34 */
+  --nk-fs-h3:      1.5rem;    /* 24 */
+  --nk-fs-lead:    1.375rem;  /* 22 */
+  --nk-fs-body:    1.25rem;   /* 20 — back-row legible */
+  --nk-lh-body:    1.45;
+  --nk-fw-light:   400;       /* no light weights on a projector */
+
+  /* --- Chrome ------------------------------------------------------------ */
+  --nk-border:        1px solid #22282B;
+  --nk-border-strong: 1px solid #4A565C;
+  --nk-shadow-sm: none;
+  --nk-shadow:    none;
+  --nk-shadow-lg: 0 0 40px rgba(255,222,89,0.10);   /* soft spotlight glow */
+  --nk-ring:      0 0 0 3px rgba(255,222,89,0.40);
+
+  /* --- Data-viz reordered for black backgrounds -------------------------- */
+  --nk-viz-1: #FFDE59;
+  --nk-viz-2: #38B6FF;
+  --nk-viz-3: #00BF63;
+  --nk-viz-4: #FF914D;
+  --nk-viz-5: #FF3131;
+  --nk-viz-6: #0CC0DF;
+  --nk-viz-7: #7ED957;
+  --nk-viz-8: #B8C4CA;
+  --nk-div-mid: #22282B;
+}
+
+/* --- Stage utility classes (signature deck moves) ------------------------ */
+
+/* Headline word: huge, yellow, underlined — the title-slide treatment */
+[data-nk-theme="stage"] .nk-spotlight {
+  font-family: var(--nk-font-stage);
+  font-weight: 700;
+  color: var(--nk-stage-yellow);
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+}
+
+/* Mid-sentence emphasis: the keyword jumps out bigger and colored */
+[data-nk-theme="stage"] .nk-em         { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-yellow); }
+[data-nk-theme="stage"] .nk-em--lime   { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-lime); }
+[data-nk-theme="stage"] .nk-em--blue   { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-blue); }
+[data-nk-theme="stage"] .nk-em--orange { font-weight: 700; font-size: 1.2em; color: var(--nk-stage-orange); }
+
+/* Highlight bar: solid orange block carrying a white keyword */
+[data-nk-theme="stage"] .nk-highlight {
+  background: var(--nk-stage-orange);
+  color: #FFFFFF;
+  font-weight: 700;
+  padding: 0.05em 0.35em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Pill chips: rounded labels for sections, steps, and banners */
+[data-nk-theme="stage"] .nk-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--nk-font-stage);
+  font-weight: 600;
+  font-size: var(--nk-fs-h3);
+  color: #FFFFFF;
+  background: var(--nk-stage-gray);
+  border-radius: var(--nk-radius-pill);
+  padding: 0.3em 0.9em;
+}
+[data-nk-theme="stage"] .nk-chip--green     { background: var(--nk-stage-green); }
+[data-nk-theme="stage"] .nk-chip--turquoise { background: var(--nk-stage-turquoise); }
+[data-nk-theme="stage"] .nk-chip--brown     { background: #8A6240; }
+
+/* Step marker: small yellow dot with a black number (process diagrams) */
+[data-nk-theme="stage"] .nk-step {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6em; height: 1.6em;
+  border-radius: 50%;
+  background: var(--nk-stage-yellow);
+  color: #000000;
+  font-family: var(--nk-font-stage);
+  font-weight: 700;
+}

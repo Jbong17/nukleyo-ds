@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nukleyo Design System — Stage Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- The real tokens drive everything below -->
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{margin:0;background:#000;color:#fff;font-family:"Poppins",sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:56px 28px 120px}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--nk-stage-turquoise);margin:0 0 10px}
+  h1.title{font-weight:800;font-size:56px;line-height:1.05;margin:0 0 8px}
+  .lede{color:#B8C4CA;font-size:18px;max-width:66ch;line-height:1.55;margin:0 0 8px}
+  section[data-nk-theme]{margin-top:56px;padding-top:28px;border-top:1px solid #22282B}
+  h2.sec{font-weight:700;font-size:24px;margin:0 0 4px;color:#fff}
+  .sub{color:#8894A0;font-size:14px;margin:0 0 22px;font-family:"IBM Plex Mono",monospace}
+  .row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .sw{border-radius:12px;overflow:hidden;border:1px solid #22282B}
+  .sw .chip{height:76px}
+  .sw .meta{padding:8px 10px;background:#0D1214;font-family:"IBM Plex Mono",monospace;font-size:12px}
+  .sw .meta b{display:block;color:#fff;font-weight:500}
+  .sw .meta span{color:#8894A0}
+  /* mock component surfaces read the same vars the React components read */
+  .card{background:var(--nk-white);border:var(--nk-border);border-radius:var(--nk-radius-lg);padding:22px;min-width:240px}
+  .stat-label{font-family:var(--nk-font-sans);font-size:var(--nk-fs-overline);letter-spacing:.09em;text-transform:uppercase;color:var(--nk-slate);font-weight:600;margin-bottom:10px}
+  .stat-value{font-family:var(--nk-font-display);font-size:3rem;line-height:1;font-weight:700;color:var(--nk-amber);font-variant-numeric:tabular-nums}
+  .stat-delta{font-family:var(--nk-font-mono);font-size:14px;color:var(--nk-verdant);margin-top:10px}
+  .btn{font-family:var(--nk-font-stage);font-weight:600;border-radius:var(--nk-radius);padding:12px 22px;border:none;font-size:18px;cursor:pointer}
+  .btn--primary{background:var(--nk-amber);color:#000}
+  .btn--accent{background:var(--nk-stage-blue);color:#000}
+  .btn--outline{background:transparent;color:#fff;border:2px solid #4A565C}
+  .callout{border-left:4px solid var(--nk-teal);background:var(--nk-info-bg);border-radius:0 10px 10px 0;padding:16px 20px;max-width:520px}
+  .callout .k{font-family:var(--nk-font-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--nk-stage-turquoise);margin-bottom:6px}
+  .callout.method{border-color:var(--nk-navy);background:var(--nk-navy-bg)}
+  .callout.method .k{color:var(--nk-stage-blue)}
+  .callout p{margin:0;font-size:18px;line-height:1.5;color:#DDE5E9}
+  .slide{aspect-ratio:16/9;background:#000;border:1px solid #22282B;border-radius:14px;padding:44px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .fig{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .arrow{color:var(--nk-stage-red);font-size:30px;font-weight:800}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Nukleyo Design System · Extension</p>
+  <h1 class="title" style="color:var(--nk-stage-yellow);text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:8px">Stage Theme</h1>
+  <p class="lede">The presentation voice of Nukleyo — a black stage, bold Poppins, and a yellow spotlight, lifted straight from your live decks. The scholarly light theme stays intact for reports; this switches on per subtree with <code style="color:#FFDE59;font-family:monospace">data-nk-theme="stage"</code>, and every existing component rethemes automatically.</p>
+
+  <!-- PALETTE -->
+  <section data-nk-theme="stage">
+    <h2 class="sec">Stage palette</h2>
+    <p class="sub">--nk-stage-* · available in every theme; roles remapped inside the stage</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#FFDE59"></div><div class="meta"><b>Spotlight yellow</b><span>#FFDE59 · headlines</span></div></div>
+      <div class="sw"><div class="chip" style="background:#38B6FF"></div><div class="meta"><b>Signal blue</b><span>#38B6FF · sections</span></div></div>
+      <div class="sw"><div class="chip" style="background:#00BF63"></div><div class="meta"><b>Banner green</b><span>#00BF63 · chips</span></div></div>
+      <div class="sw"><div class="chip" style="background:#7ED957"></div><div class="meta"><b>Bright lime</b><span>#7ED957 · positive</span></div></div>
+      <div class="sw"><div class="chip" style="background:#FF914D"></div><div class="meta"><b>Highlight orange</b><span>#FF914D · keyword bars</span></div></div>
+      <div class="sw"><div class="chip" style="background:#FF3131"></div><div class="meta"><b>Process red</b><span>#FF3131 · arrows</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0CC0DF"></div><div class="meta"><b>Turquoise</b><span>#0CC0DF · pills</span></div></div>
+      <div class="sw"><div class="chip" style="background:#717D82"></div><div class="meta"><b>Step gray</b><span>#717D82 · rails</span></div></div>
+    </div>
+  </section>
+
+  <!-- TYPE -->
+  <section data-nk-theme="stage">
+    <h2 class="sec">Type on stage</h2>
+    <p class="sub">Poppins for display + interface · IBM Plex Mono still carries data</p>
+    <div style="font-size:68px;font-weight:800;line-height:1.05">Nuclear Science</div>
+    <div style="font-size:34px;font-weight:700;color:#38B6FF;margin-top:6px">Section header · signal blue</div>
+    <div style="font-size:20px;color:#DDE5E9;margin-top:10px;max-width:60ch">Body copy sits at 20px so the back row can read it. Weights never drop below regular on a projector.</div>
+  </section>
+
+  <!-- SIGNATURE MOVES -->
+  <section data-nk-theme="stage">
+    <h2 class="sec">Signature moves</h2>
+    <p class="sub">utility classes distilled from your slides</p>
+    <div style="font-size:30px;font-weight:700;line-height:1.5;max-width:800px">
+      Radiation is the <span class="nk-em">spontaneous emission</span> of energy that can cause
+      <span class="nk-highlight">IONIZATION</span> — a substance with
+      <span class="nk-em--lime">unstable nuclei</span> is radioactive.
+    </div>
+    <div class="row" style="margin-top:26px">
+      <span class="nk-chip nk-chip--green">💡 Review</span>
+      <span class="nk-chip nk-chip--turquoise">Principle of Mutation Breeding</span>
+      <span class="nk-chip">Mass Rearing</span>
+      <span class="nk-chip nk-chip--brown">Desired Mutations</span>
+    </div>
+    <div class="fig" style="margin-top:26px">
+      <span class="nk-step">1</span><span style="font-weight:600;font-size:20px">Mass Rearing</span>
+      <span class="arrow">➜</span>
+      <span class="nk-step">2</span><span style="font-weight:600;font-size:20px">Irradiating</span>
+      <span class="arrow">➜</span>
+      <span class="nk-step">3</span><span style="font-weight:600;font-size:20px">Testing</span>
+      <span class="arrow">➜</span>
+      <span class="nk-step">4</span><span style="font-weight:600;font-size:20px">Releasing</span>
+    </div>
+  </section>
+
+  <!-- COMPONENTS RETHEMED -->
+  <section data-nk-theme="stage">
+    <h2 class="sec">Components, rethemed</h2>
+    <p class="sub">same React components — Button, StatTile, Callout — reading the stage vars</p>
+    <div class="row">
+      <button class="btn btn--primary">Run analysis</button>
+      <button class="btn btn--accent">Next slide</button>
+      <button class="btn btn--outline">Back</button>
+    </div>
+    <div class="row" style="margin-top:18px">
+      <div class="card">
+        <div class="stat-label">Sterile Males Released</div>
+        <div class="stat-value">1.2M</div>
+        <div class="stat-delta">▲ +18% vs. baseline</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Model AUC</div>
+        <div class="stat-value">0.94</div>
+        <div class="stat-delta">▲ +0.06 vs. baseline</div>
+      </div>
+      <div class="callout method">
+        <div class="k">Method</div>
+        <p>Non-parametric first: Wilcoxon signed-rank for small n.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE MOCKUP -->
+  <section data-nk-theme="stage">
+    <h2 class="sec">On a slide</h2>
+    <p class="sub">how the tokens compose into your title + content slides</p>
+    <div class="slide">
+      <div style="font-size:52px;font-weight:800;line-height:1.08">
+        <span class="nk-spotlight">Nuclear Science</span><br>
+        <span style="font-size:0.55em;font-weight:600">in</span> <span class="nk-spotlight">Agriculture</span> &amp;
+        <span style="font-size:0.55em;font-weight:600">the</span> <span class="nk-spotlight">Environment</span>
+      </div>
+      <div style="color:#38B6FF;font-weight:700;font-size:22px;margin-top:12px">Jerald B. Bongalos, MScT, LPT, RChT</div>
+      <div style="color:#8894A0;font-size:16px">DOST · National Research Council of the Philippines</div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
