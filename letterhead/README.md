@@ -16,40 +16,45 @@ Open `letterhead.html` in a browser → **Cmd-P** → *Save as PDF*.
   `<section class="sheet cont">` per extra page, or delete it for a one-page letter.
 - Verified: prints to exactly A4 (596×843pt), 2 pages, backgrounds intact, 0 errors.
 
-## Drop your logo in  ← the one thing outstanding
+## The logo — done
 
-Save the Theme 2 lockup as:
+`assets/logo.png` is the Theme 2 lockup, extracted from the supplied 4-up grid:
 
-```
-letterhead/assets/logo.svg      (SVG preferred — scales + recolors)
-```
+- cropped the **top-left** tile (navy/teal/gold art on near-white),
+- **alpha-keyed** the background with a feathered threshold on *distance from the
+  background colour* — deliberately **not** a luminance key, which drags the gold
+  (`#BD9C59`) down to ~66% opacity and washes it out,
+- **inset 10px before cropping**: rows 624–626 of the tile bleed in from the teal
+  tile below (`#E7EDED`) and survive the key as a full-width line across the mark,
+- trimmed to the art: **435×340**, corners fully transparent.
 
-That's it. The placeholder lockup hides itself automatically (`onerror`), and the
-layout is unchanged — the slot is already sized (22mm tall on page 1, 11mm on
-continuation pages).
+`assets/logo-reverse.png` is the same treatment on the navy tile → white art, for
+dark surfaces.
 
-Using a PNG instead? Name it `logo.png` and change the two `src="assets/logo.svg"`
-references. Export at **2000px+ wide with a real transparent background**.
+**Resolution ceiling:** the grid is 1254×1254, so each tile is 627×627 and the art
+is 435×340. At the 30mm masthead size that's ≈290dpi — fine for print, just under
+the 300dpi ideal. **An SVG export would be sharper** and is a straight drop-in:
+save it as `assets/logo.svg` and change the two `src=` references.
 
-> Every logo PNG currently on this machine (`Nukleyo DS Logo.png`,
-> `NDS Logo clear background.png`, …) is the **old circular mark**, and despite the
-> filenames the background is **baked in opaque** — none are usable here.
+> For the record: every *other* logo file on this machine (`Nukleyo DS Logo.png`,
+> `NDS Logo clear background.png`, …) is the **old circular mark** with an opaque
+> baked-in background despite the filenames — none are usable.
 
-## Correct the palette  ← estimated, not sampled
+## Palette — sampled, not guessed
 
-The five hexes at the top of `letterhead.html` were read **by eye** from the Theme 2
-sheet. Correct them and everything follows — they're the only colour source:
+Measured from the brand assets themselves: the three colour tiles of the logo grid
+are the brand's own swatches, and the sheet's page background is the stock.
 
-| Variable | Current guess | Role |
+| Variable | Value | Sampled from |
 |---|---|---|
-| `--ndsl-cream` | `#F7F5F0` | page stock |
-| `--ndsl-navy`  | `#1B2A38` | primary text, wordmark |
-| `--ndsl-teal`  | `#2E6B5E` | accent rule, tagline |
-| `--ndsl-gold`  | `#B08D57` | the "decision" accent — **once per page** |
-| `--ndsl-gray`  | `#6B7680` | meta / muted |
+| `--ndsl-cream` | `#F9F8F6` | brand sheet page background |
+| `--ndsl-navy`  | `#00172E` | the navy lockup tile |
+| `--ndsl-teal`  | `#035059` | the teal lockup tile |
+| `--ndsl-gold`  | `#BD9C59` | the "decision" arrow — **once per page** |
+| `--ndsl-gray`  | `#5A6672` | derived (navy, desaturated) for meta text |
 
-If the logo arrives as **SVG**, the exact brand hexes can be read straight out of it
-and these guesses replaced with real values.
+The earlier by-eye estimates were badly off — navy was guessed `#1B2A38` vs the real
+`#00172E`, teal `#2E6B5E` vs `#035059`. Don't eyeball brand colour off a screenshot.
 
 ## Type
 

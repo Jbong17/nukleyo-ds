@@ -13,22 +13,25 @@
    PAPER: A4 by default. For US Letter, add class="us" to <html> (line 1 of
    <body> instructions below) — or just change --sheet-h/--sheet-w.
 
-   LOGO: drop your file at letterhead/assets/logo.svg (or .png). Until then a
-   typographic fallback lockup renders in its place — the layout is identical,
-   so the swap changes nothing else.
+   LOGO: assets/logo.png — the Theme 2 lockup, alpha-keyed off the supplied
+   4-up grid and trimmed. A typographic fallback still renders if the file ever
+   goes missing. Source is 435x340 (~290dpi at this size): fine for print, but
+   an SVG export would be sharper and is a drop-in replacement.
 
-   PALETTE: sampled by eye from the "Theme 2 — The Decision Engine" sheet.
-   These are ESTIMATES — correct the five hexes below and everything follows.
+   PALETTE: SAMPLED from the brand assets (not estimated) — see :root.
    ============================================================================ */
 
 :root {
-  /* --- Theme 2 palette (CORRECT THESE if you have exact values) --------- */
-  --ndsl-cream:  #F7F5F0;   /* page stock — warm off-white */
-  --ndsl-navy:   #1B2A38;   /* primary text, wordmark */
-  --ndsl-teal:   #2E6B5E;   /* accent rule, secondary marks */
-  --ndsl-gold:   #B08D57;   /* the "decision" accent — use once per page */
-  --ndsl-gray:   #6B7680;   /* meta, muted */
-  --ndsl-hair:   #D9D5CC;   /* hairline rules on cream */
+  /* --- Theme 2 palette — SAMPLED from the brand assets, not estimated ----
+     stock : the brand sheet's page background
+     navy  : the navy lockup panel  |  teal: the teal lockup panel
+     gold  : the "decision" arrow in the mark                              */
+  --ndsl-cream:  #F9F8F6;   /* page stock — warm off-white */
+  --ndsl-navy:   #00172E;   /* primary text — the brand navy */
+  --ndsl-teal:   #035059;   /* accent rule, tagline */
+  --ndsl-gold:   #BD9C59;   /* the "decision" accent — use once per page */
+  --ndsl-gray:   #5A6672;   /* meta, muted — navy desaturated */
+  --ndsl-hair:   #DCD9D3;   /* hairline rules on stock */
 
   /* --- Paper ------------------------------------------------------------ */
   --sheet-w: 210mm;   --sheet-h: 297mm;          /* A4 */
@@ -66,7 +69,7 @@ body {
 .masthead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12mm; }
 
 .lockup { display: flex; align-items: center; gap: 5mm; }
-.lockup img { height: 22mm; width: auto; display: block; }
+.lockup img { height: 30mm; width: auto; display: block; }
 
 /* Typographic fallback — shown only while assets/logo.svg is absent.
    It is deliberately plain: a placeholder should not impersonate the mark. */
@@ -121,7 +124,7 @@ body {
 
 /* --- Continuation page -------------------------------------------------- */
 .sheet.cont .masthead { align-items: center; }
-.sheet.cont .lockup img, .sheet.cont .lockup .fallback .mono-mark { height: 11mm; width: 11mm; font-size: 13pt; }
+.sheet.cont .lockup img, .sheet.cont .lockup .fallback .mono-mark { height: 14mm; width: 14mm; font-size: 13pt; }
 .sheet.cont .lockup img { width: auto; }
 .sheet.cont .wordmark { font-size: 11pt; letter-spacing: .34em; }
 .sheet.cont .tagline { display: none; }
@@ -157,7 +160,7 @@ body {
   <strong>Screen preview.</strong> Print with <code>Cmd-P → Save as PDF</code>, and turn on
   <strong>Background graphics</strong> or the cream stock and rules will drop out.
   For US Letter set <code>&lt;html class="us"&gt;</code>.
-  <br>Drop your logo at <code>letterhead/assets/logo.svg</code> — the placeholder below disappears automatically.
+  <br>Logo: <code>assets/logo.png</code> (keyed from your 4-up grid). Replace with an SVG export any time — same slot.
 </div>
 
 <!-- ======================= PAGE 1 — letterhead ======================= -->
@@ -165,7 +168,7 @@ body {
   <header class="masthead">
     <div class="lockup">
       <!-- Swap-in point. onerror keeps the fallback when the file isn't there yet. -->
-      <img src="assets/logo.svg" alt="Nukleyo Decision Science"
+      <img src="assets/logo.png" alt="Nukleyo Decision Science"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="fallback" style="display:none">
         <div class="mono-mark">N</div>
@@ -235,7 +238,7 @@ body {
 <section class="sheet cont">
   <header class="masthead">
     <div class="lockup">
-      <img src="assets/logo.svg" alt="Nukleyo Decision Science"
+      <img src="assets/logo.png" alt="Nukleyo Decision Science"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="fallback" style="display:none">
         <div class="mono-mark">N</div>
